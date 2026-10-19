@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Conoce al Creador · Diego Jiménez</title>
+<link rel="icon" href="avatar.jpg">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: ficha personal con selector de "sombreros" — cada perfil cambia acento, CV y apps */
+:root{
+  --bg:#F3F4F7; --surface:#FFFFFF; --fg:#15171E; --muted:#555B6B; --line:#DADDE5;
+  --a-traductor:#2B55D9; --a-profesor:#A8620A; --a-programador:#17784F; --a-coach:#C43B1E;
+  --accent:var(--a-programador);
+  --display:"Unbounded", "Arial Black", system-ui, sans-serif;
+  --body:"Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#101218; --surface:#191C24; --fg:#ECEEF3; --muted:#A3A9B8; --line:#2C303B;
+  --a-traductor:#7D9BFF; --a-profesor:#F0A94A; --a-programador:#4FCB92; --a-coach:#FF8466; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#101218; --surface:#191C24; --fg:#ECEEF3; --muted:#A3A9B8; --line:#2C303B;
+  --a-traductor:#7D9BFF; --a-profesor:#F0A94A; --a-programador:#4FCB92; --a-coach:#FF8466; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.55}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 64px;display:flex;flex-direction:column;gap:40px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+/* Cabecera */
+.hero{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center}
+.avatar{width:132px;height:132px;border-radius:50%;overflow:hidden;background:var(--surface);border:3px solid var(--accent);transition:border-color .3s;display:grid;place-items:center}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.avatar .ini{font-family:var(--display);font-size:40px;font-weight:700;color:var(--accent);transition:color .3s}
+.hero h1{font-family:var(--display);font-weight:700;font-size:clamp(30px,5vw,52px);line-height:1.05;margin:6px 0 10px;text-wrap:balance}
+.hero p{margin:0;color:var(--muted);max-width:60ch}
+@media (max-width:560px){.hero{grid-template-columns:1fr;justify-items:start}.avatar{width:104px;height:104px}}
+/* Selector de perfiles */
+.tabs{display:flex;flex-wrap:wrap;gap:8px}
+.tab{font:600 15px var(--body);color:var(--fg);background:var(--surface);border:1.5px solid var(--line);border-radius:999px;padding:11px 18px;min-height:44px;cursor:pointer;display:flex;align-items:center;gap:9px;transition:border-color .2s,background .2s}
+.tab .dot{width:10px;height:10px;border-radius:50%;background:var(--c)}
+.tab:hover{border-color:var(--c)}
+.tab[aria-selected="true"]{border-color:var(--c);box-shadow:inset 0 0 0 1.5px var(--c)}
+.tab:focus-visible,.app:focus-visible,.copy:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+/* Panel */
+.panel{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:40px;align-items:start}
+@media (max-width:820px){.panel{grid-template-columns:1fr}}
+.role{font-family:var(--display);font-weight:500;font-size:clamp(24px,3.4vw,34px);margin:4px 0 12px;color:var(--accent);transition:color .3s;text-wrap:balance}
+.summary{margin:0 0 28px;max-width:62ch}
+.block{border-top:1px solid var(--line);padding-block:18px;display:grid;grid-template-columns:140px minmax(0,1fr);gap:16px}
+@media (max-width:560px){.block{grid-template-columns:1fr;gap:6px}}
+.block h3{margin:2px 0 0;font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.item{margin-bottom:14px}.item:last-child{margin-bottom:0}
+.item b{display:block;font-weight:600}
+.item span{color:var(--muted);font-size:14px;font-variant-numeric:tabular-nums}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:14px;padding:4px 11px;border-radius:999px;background:var(--bg);border:1px solid var(--line)}
+.todo{display:inline-block;font:500 13px var(--mono);color:var(--muted);border:1.5px dashed var(--line);border-radius:6px;padding:3px 8px}
+/* Apps */
+.apps h2{font-family:var(--display);font-weight:500;font-size:20px;margin:4px 0 16px}
+.applist{display:flex;flex-direction:column;gap:10px}
+.app{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:14px;align-items:center;padding:14px 16px;background:var(--surface);border:1px solid var(--line);border-radius:14px;color:var(--fg);text-decoration:none;transition:border-color .2s,transform .2s}
+.app:hover{border-color:var(--accent);transform:translateX(3px)}
+.app .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--bg);color:var(--accent);transition:color .3s}
+.app .ic svg{width:22px;height:22px}
+.app b{display:block;font-weight:600}
+.app small{display:block;color:var(--muted);font-size:13.5px;line-height:1.4}
+.app .go{color:var(--muted)}
+.soon{padding:16px;border:1.5px dashed var(--line);border-radius:14px;color:var(--muted);font-size:14px}
+/* Contacto */
+.contact{border-top:1px solid var(--line);padding-top:24px;display:flex;flex-wrap:wrap;gap:24px 40px;align-items:baseline}
+.contact div{display:flex;flex-direction:column;gap:4px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<main class="wrap">
+  <header class="hero">
+    <div class="avatar" id="avatar"><img src="avatar.jpg" alt="Foto de Diego Jiménez" width="220" height="220"></div>
+    <div>
+      <div class="eyebrow">¿Quieres conocer al creador?</div>
+      <h1 id="name">Diego Jiménez</h1>
+      <p id="tagline">Traduzco, enseño idiomas, programo apps y entreno a personas. Elige un perfil para ver mi trayectoria y las herramientas que he creado para cada uno.</p>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="Perfiles" id="tabs"></nav>
+
+  <section class="panel" role="tabpanel" id="panel" aria-live="polite">
+    <div>
+      <div class="eyebrow">Perfil</div>
+      <h2 class="role" id="role"></h2>
+      <p class="summary" id="summary"></p>
+      <div id="cv"></div>
+    </div>
+    <aside class="apps">
+      <div class="eyebrow">Hecho por mí</div>
+      <h2 id="appsTitle">Apps de este perfil</h2>
+      <div class="applist" id="apps"></div>
+    </aside>
+  </section>
+
+  <footer class="contact">
+    <div><span class="eyebrow">Email</span><span class="todo">[tu email público]</span></div>
+    <div><span class="eyebrow">LinkedIn</span><span class="todo">[enlace LinkedIn]</span></div>
+    <div><span class="eyebrow">GitHub</span><span class="todo">[enlace GitHub]</span></div>
+    <div><span class="eyebrow">Ubicación</span><span class="todo">[ciudad]</span></div>
+  </footer>
+</main>
+
+<script>
+const ICON={
+  shirt:'<path d="M8 3 4 5.5 2 10l3 1.5V21h14v-9.5l3-1.5-2-4.5L16 3a4 4 0 0 1-8 0Z"/>',
+  dumbbell:'<path d="M6 6v12M18 6v12M3 9v6M21 9v6M6 12h12"/>',
+  send:'<path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/>',
+  tooth:'<path d="M7 3c-3 0-4 3-3.5 6 .4 2.6 1.5 4 2 7 .4 2.5 1 5 2.5 5s1.5-4 3-4 1.5 4 3 4 2.1-2.5 2.5-5c.5-3 1.6-4.4 2-7C19 6 18 3 15 3c-1.5 0-2 1-3 1s-1.5-1-3-1Z"/>',
+  target:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
+  sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
+  notebook:'<path d="M5 3h12a2 2 0 0 1 2 2v16H7a2 2 0 0 1-2-2V3Z"/><path d="M9 7h6M9 11h6"/>',
+  arrow:'<path d="M7 17 17 7M8 7h9v9"/>'
+};
+const svg=(k)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON[k]}</svg>`;
+
+/* Apps: textos breves, a corregir con la descripción real de cada una */
+const APPS={
+  armario:{n:"Armario Virtual",d:"Organiza tu ropa y combina prendas.",u:"https://armario-virtual-one.vercel.app",i:"shirt"},
+  entrenos:{n:"Entrenamientos",d:"Rutinas y planificación de entrenos.",u:"https://entrenamientos-web-two.vercel.app",i:"dumbbell"},
+  candid:{n:"Candidatures automatiques",d:"Automatiza el envío de candidaturas.",u:"https://candidatures-automatiques.vercel.app",i:"send"},
+  colordent:{n:"Colordent",d:"[descripción de Colordent]",u:"https://colordent-kappa.vercel.app",i:"tooth"},
+  kit:{n:"Kit de prospection",d:"Prospección comercial asistida.",u:"https://kit-prospection.vercel.app",i:"target"},
+  siar:{n:"Radiación SIAR",d:"Consulta de datos de radiación solar.",u:"https://radiacion-siar-pr.vercel.app",i:"sun"}
+};
+
+const PROFILES={
+  traductor:{label:"Traductor",role:"Traducción",color:"--a-traductor",
+    summary:"[Una o dos frases: qué idiomas traduces, especialidad (técnica, jurídica, audiovisual…) y para quién trabajas.]",
+    exp:[["[Puesto o cliente]","[fechas · ciudad]"]],
+    edu:[["[Título o certificación]","[centro · año]"]],
+    skills:["[Combinación de idiomas]","[Herramientas TAO]","[Especialidad]"],
+    langs:["Español","Francés","[otros]"],
+    apps:[]},
+  profesor:{label:"Profesor de idiomas",role:"Enseñanza de idiomas",color:"--a-profesor",
+    summary:"[Qué idiomas enseñas, a qué niveles y en qué formato: clases particulares, grupos, empresa, online.]",
+    exp:[["[Centro o academia]","[fechas · ciudad]"]],
+    edu:[["[Titulación docente]","[centro · año]"]],
+    skills:["[Idiomas que enseñas]","[Niveles MCER]","[Preparación de exámenes]"],
+    langs:["Español","Francés","[otros]"],
+    apps:[]},
+  programador:{label:"Programador",role:"Desarrollo de apps",color:"--a-programador",
+    summary:"Diseño y publico aplicaciones web prácticas, de la idea al despliegue. [Añade tu enfoque o especialidad.]",
+    exp:[["[Proyecto, empresa o freelance]","[fechas · ciudad]"]],
+    edu:[["[Formación en programación]","[centro · año]"]],
+    skills:["Python","HTML / CSS / JavaScript","Vercel","Apps con IA","[más tecnologías]"],
+    langs:["Español","Francés","[otros]"],
+    apps:["armario","entrenos","candid","colordent","kit","siar"]},
+  coach:{label:"Coach deportivo",role:"Entrenamiento personal",color:"--a-coach",
+    summary:"[Tu disciplina (fuerza, CrossFit, running…), a quién entrenas y cómo trabajas.]",
+    exp:[["[Box, gimnasio o clientes]","[fechas · ciudad]"]],
+    edu:[["[Certificación deportiva]","[entidad · año]"]],
+    skills:["Planificación de rutinas","Seguimiento de progreso","[más]"],
+    langs:["Español","Francés","[otros]"],
+    apps:["entrenos"]}
+};
+
+const isTodo=s=>/^\[.*\]$/.test(s.trim());
+const txt=s=>isTodo(s)?`<span class="todo">${s}</span>`:s.replace(/(\[[^\]]+\])/g,'<span class="todo">$1</span>');
+
+const tabsEl=document.getElementById('tabs');
+Object.entries(PROFILES).forEach(([k,p])=>{
+  const b=document.createElement('button');
+  b.className='tab';b.id='tab-'+k;b.setAttribute('role','tab');b.dataset.k=k;
+  b.style.setProperty('--c',`var(${p.color})`);
+  b.innerHTML=`<span class="dot"></span>${p.label}`;
+  b.addEventListener('click',()=>show(k,true));
+  tabsEl.appendChild(b);
+});
+
+function show(k,user){
+  const p=PROFILES[k]; if(!p) return;
+  document.documentElement.style.setProperty('--accent',`var(${p.color})`);
+  tabsEl.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-selected',t.dataset.k===k));
+  document.getElementById('panel').setAttribute('aria-labelledby','tab-'+k);
+  document.getElementById('role').textContent=p.role;
+  document.getElementById('summary').innerHTML=txt(p.summary);
+  const items=a=>a.map(([b,s])=>`<div class="item"><b>${txt(b)}</b><span>${txt(s)}</span></div>`).join('');
+  const chips=a=>`<div class="chips">${a.map(c=>isTodo(c)?`<span class="todo">${c}</span>`:`<span class="chip">${c}</span>`).join('')}</div>`;
+  document.getElementById('cv').innerHTML=
+    `<div class="block"><h3>Experiencia</h3><div>${items(p.exp)}</div></div>`+
+    `<div class="block"><h3>Formación</h3><div>${items(p.edu)}</div></div>`+
+    `<div class="block"><h3>Habilidades</h3>${chips(p.skills)}</div>`+
+    `<div class="block"><h3>Idiomas</h3>${chips(p.langs)}</div>`;
+  const apps=document.getElementById('apps');
+  apps.innerHTML=p.apps.length?p.apps.map(id=>{const a=APPS[id];return `<a class="app" href="${a.u}" target="_blank" rel="noopener"><span class="ic">${svg(a.i)}</span><span><b>${a.n}</b><small>${txt(a.d)}</small></span><span class="go">${svg('arrow')}</span></a>`}).join('')
+    :`<div class="soon">Aún no hay apps publicadas para este perfil. <span class="todo">[añade aquí tus herramientas o materiales]</span></div>`;
+  if(user){ try{history.replaceState(null,'','#'+k)}catch(e){} try{localStorage.setItem('perfil',k)}catch(e){} }
+}
+
+let start='programador';
+const h=location.hash.slice(1);
+if(PROFILES[h]) start=h; else { try{const s=localStorage.getItem('perfil'); if(PROFILES[s]) start=s;}catch(e){} }
+show(start,false);
+window.addEventListener('hashchange',()=>show(location.hash.slice(1),false));
+</script>
+
+</body>
+</html>
