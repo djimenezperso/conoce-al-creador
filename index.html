@@ -76,6 +76,13 @@ body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-
 .contact a:hover{color:var(--accent)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
+<!-- Vercel Web Analytics. Visita la web con ?soyyo=1 para marcar este navegador como "yo" (y ?noyo=1 para quitarlo). -->
+<script>
+(function(){try{var q=new URLSearchParams(location.search);if(q.has('soyyo'))localStorage.setItem('va-soy-yo','1');if(q.has('noyo'))localStorage.removeItem('va-soy-yo');}catch(e){}})();
+window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};
+window.va('beforeSend',function(ev){try{if(localStorage.getItem('va-soy-yo')){var u=new URL(ev.url);u.searchParams.delete('soyyo');u.searchParams.set('utm_source','yo');ev.url=u.toString();}}catch(e){}return ev;});
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 <main class="wrap">
@@ -412,6 +419,5 @@ window.addEventListener("hashchange",()=>{const x=location.hash.slice(1); if(T.P
 fetch(STATS_URL).then(r=>r.ok?r.json():null).then(d=>{ if(d&&d.ok){STATS=d; show(CUR,false);} }).catch(()=>{});
 </script>
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
-<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
