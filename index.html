@@ -61,7 +61,11 @@ body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-
 .app .ic svg{width:22px;height:22px}
 .app b{display:block;font-weight:600}
 .app small{display:block;color:var(--muted);font-size:13.5px;line-height:1.4}
-.app .go{color:var(--muted)}
+.app .go{color:var(--muted);display:flex}.app .go svg{width:18px;height:18px}
+.app-priv:hover{border-color:var(--line);transform:none}
+.app .tag{display:flex;align-items:center;gap:5px;font:500 11.5px var(--mono);color:var(--muted);white-space:nowrap}
+.app .tag svg{width:14px;height:14px}
+@media (max-width:420px){.app .tag span{display:none}}
 .soon{padding:16px;border:1.5px dashed var(--line);border-radius:14px;color:var(--muted);font-size:14px}
 .contact{border-top:1px solid var(--line);padding-top:24px;display:flex;flex-wrap:wrap;gap:24px 40px;align-items:baseline}
 .contact div{display:flex;flex-direction:column;gap:4px;min-width:0}
@@ -110,18 +114,22 @@ const ICON={
   tooth:'<path d="M7 3c-3 0-4 3-3.5 6 .4 2.6 1.5 4 2 7 .4 2.5 1 5 2.5 5s1.5-4 3-4 1.5 4 3 4 2.1-2.5 2.5-5c.5-3 1.6-4.4 2-7C19 6 18 3 15 3c-1.5 0-2 1-3 1s-1.5-1-3-1Z"/>',
   target:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
   sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
-  arrow:'<path d="M7 17 17 7M8 7h9v9"/>'
+  arrow:'<path d="M7 17 17 7M8 7h9v9"/>',
+  chart:'<path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/>',
+  lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>'
 };
 const svg=k=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON[k]}</svg>`;
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
+/* Apps personales: con enlace. Proyectos para clientes o de uso interno: sin enlace ni nombre. */
 const APP_URLS={
   armario:["https://armario-virtual-one.vercel.app","shirt"],
   entrenos:["https://entrenamientos-web-two.vercel.app","dumbbell"],
-  candid:["https://candidatures-automatiques.vercel.app","send"],
-  colordent:["https://colordent-kappa.vercel.app","tooth"],
-  kit:["https://kit-prospection.vercel.app","target"],
-  siar:["https://radiacion-siar-pr.vercel.app","sun"]
+  halte:["https://comparateur-halterophilie.vercel.app","chart"],
+  candid:[null,"send"],
+  colordent:[null,"tooth"],
+  kit:[null,"target"],
+  siar:[null,"sun"]
 };
 
 
@@ -133,7 +141,8 @@ es:{
   profile:"Perfil", made:"Hecho por mí", apps:"Apps de este perfil", none:"Las apps de este perfil están en camino.",
   h:{exp:"Experiencia",edu:"Formación",skills:"Competencias",langs:"Idiomas"},
   c:{email:"Email",phone:"Teléfono",city:"Ciudad",social:"Redes"}, city:"París, Francia",
-  apps_txt:{armario:["Armario Virtual","Organiza tu ropa y combina looks."],entrenos:["Entrenamientos","Rutinas y planificación de entrenos."],candid:["Candidatures automatiques","Automatiza el envío de candidaturas."],colordent:["Colordent",""],kit:["Kit de prospection","Herramienta de prospección comercial."],siar:["Radiación SIAR","Consulta de datos de radiación solar."]},
+  apps_txt:{armario:["Armario virtual con IA","Organiza la ropa y propone conjuntos."],entrenos:["Planificador de entrenamientos","Rutinas, sesiones y seguimiento."],halte:["Comparador de halterofilia","Analiza y compara marcas y levantamientos."],candid:["Automatización de candidaturas","Prepara y envía solicitudes de empleo."],colordent:["Sistema para clínica dental","Herramienta de gestión para el sector salud."],kit:["Sistema de prospección comercial","Captación de clientes para centros de formación."],siar:["Panel de datos climáticos","Consulta y visualización de datos de radiación solar."]},
+  priv:"Uso interno",
   order:["traductor","profesor","programador"],
   P:{
     traductor:{label:"Traductor e intérprete",role:"Traducción e interpretación",email:"djimenezpenapro@gmail.com",
@@ -182,7 +191,7 @@ es:{
       exp:[],edu:[],
       skills:["HTML y CSS","Python","Herramientas de IA","GitHub","Vercel","Diseño de interfaces","Adobe XD","Gimp"],
       langs:["Español · nativo","Inglés · nativo","Francés · C2"],
-      apps:["armario","entrenos","candid","colordent","kit","siar"]}
+      apps:["armario","entrenos","halte","candid","colordent","kit","siar"]}
   }
 },
 fr:{
@@ -192,7 +201,8 @@ fr:{
   profile:"Profil", made:"Fait par moi", apps:"Applications de ce profil", none:"Les applications de ce profil arrivent bientôt.",
   h:{exp:"Expérience",edu:"Formation",skills:"Compétences",langs:"Langues"},
   c:{email:"Email",phone:"Téléphone",city:"Ville",social:"Réseaux"}, city:"Paris, France",
-  apps_txt:{armario:["Armario Virtual","Organisez votre garde-robe et vos tenues."],entrenos:["Entrenamientos","Programmes et planification d'entraînement."],candid:["Candidatures automatiques","Automatise l'envoi de candidatures."],colordent:["Colordent",""],kit:["Kit de prospection","Outil de prospection commerciale."],siar:["Radiación SIAR","Consultation de données de rayonnement solaire."]},
+  apps_txt:{armario:["Garde-robe virtuelle avec IA","Organise les vêtements et propose des tenues."],entrenos:["Planificateur d'entraînement","Programmes, séances et suivi."],halte:["Comparateur d'haltérophilie","Analyse et compare les performances."],candid:["Automatisation de candidatures","Prépare et envoie des candidatures."],colordent:["Système pour cabinet dentaire","Outil de gestion pour le secteur de la santé."],kit:["Système de prospection commerciale","Acquisition de clients pour organismes de formation."],siar:["Tableau de données climatiques","Consultation et visualisation du rayonnement solaire."]},
+  priv:"Usage interne",
   order:["profesor","traductor","coach","programador"],
   P:{
     traductor:{label:"Traducteur-interprète",role:"Traduction et interprétation",email:"djimenezpenapro@gmail.com",
@@ -247,13 +257,13 @@ fr:{
            ["Sorbonne Nouvelle","Paris",""]],
       skills:["Programmation d'entraînement","Coaching individuel","Coaching en ligne","Teambuilding sportif","Animation de groupes","Gestion de clients","Adaptation aux publics","Création de contenus"],
       langs:["Français · C2","Espagnol · natif","Anglais · natif"],
-      apps:["entrenos"]},
+      apps:["entrenos","halte"]},
     programador:{label:"Créateur d'apps",role:"Applications web",email:"djimenezpenapro@gmail.com",
       summary:"Je conçois et publie des applications web pratiques avec l'aide de l'intelligence artificielle, de l'idée à la mise en ligne : outils du quotidien, sport, formation et prospection.",
       exp:[],edu:[],
       skills:["HTML et CSS","Python","Outils d'IA","GitHub","Vercel","Design d'interfaces","Adobe XD","Gimp"],
       langs:["Espagnol · natif","Anglais · natif","Français · C2"],
-      apps:["armario","entrenos","candid","colordent","kit","siar"]}
+      apps:["armario","entrenos","halte","candid","colordent","kit","siar"]}
   }
 },
 en:{
@@ -263,7 +273,8 @@ en:{
   profile:"Profile", made:"Made by me", apps:"Apps for this profile", none:"Apps for this profile are on the way.",
   h:{exp:"Experience",edu:"Education",skills:"Skills",langs:"Languages"},
   c:{email:"Email",phone:"Phone",city:"City",social:"Social"}, city:"Paris, France",
-  apps_txt:{armario:["Armario Virtual","Organise your wardrobe and outfits."],entrenos:["Entrenamientos","Training plans and workout scheduling."],candid:["Candidatures automatiques","Automates job applications."],colordent:["Colordent",""],kit:["Kit de prospection","Sales prospecting toolkit."],siar:["Radiación SIAR","Solar radiation data lookup."]},
+  apps_txt:{armario:["AI virtual wardrobe","Organises clothes and suggests outfits."],entrenos:["Training planner","Workouts, sessions and progress tracking."],halte:["Weightlifting comparator","Analyses and compares lifts and records."],candid:["Job application automation","Prepares and sends job applications."],colordent:["Dental clinic system","Management tool for the healthcare sector."],kit:["Sales prospecting system","Client acquisition for training providers."],siar:["Climate data dashboard","Solar radiation lookup and charts."]},
+  priv:"Internal use",
   order:["traductor","profesor","coach","programador"],
   P:{
     traductor:{label:"Translator & interpreter",role:"Translation and interpreting",email:"djimenezpenapro@gmail.com",
@@ -318,13 +329,13 @@ en:{
            ["Sorbonne Nouvelle","Paris",""]],
       skills:["Training programming","One-to-one coaching","Online coaching","Sports team building","Group classes","Client management","Adapting to every audience","Content creation"],
       langs:["French · C2","Spanish · native","English · native"],
-      apps:["entrenos"]},
+      apps:["entrenos","halte"]},
     programador:{label:"App builder",role:"Web apps",email:"djimenezpenapro@gmail.com",
       summary:"I design and publish practical web apps with the help of AI, from idea to launch: everyday tools, sport, training and sales prospecting.",
       exp:[],edu:[],
       skills:["HTML & CSS","Python","AI tools","GitHub","Vercel","Interface design","Adobe XD","Gimp"],
       langs:["English · native","Spanish · native","French · C2"],
-      apps:["armario","entrenos","candid","colordent","kit","siar"]}
+      apps:["armario","entrenos","halte","candid","colordent","kit","siar"]}
   }
 }};
 const COLORS={traductor:"--a-traductor",profesor:"--a-profesor",programador:"--a-programador",coach:"--a-coach"};
@@ -370,7 +381,9 @@ function show(k,user){
   document.getElementById("cv").innerHTML=html;
   document.getElementById("apps").innerHTML=p.apps.length?p.apps.map(id=>{
     const [u,i]=APP_URLS[id],[n,d]=T.apps_txt[id];
-    return `<a class="app" href="${u}" target="_blank" rel="noopener"><span class="ic">${svg(i)}</span><span><b>${esc(n)}</b>${d?`<small>${esc(d)}</small>`:""}</span><span class="go">${svg("arrow")}</span></a>`;
+    const inner=`<span class="ic">${svg(i)}</span><span><b>${esc(n)}</b>${d?`<small>${esc(d)}</small>`:""}</span>`;
+    return u?`<a class="app" href="${u}" target="_blank" rel="noopener">${inner}<span class="go">${svg("arrow")}</span></a>`
+            :`<div class="app app-priv">${inner}<span class="tag" title="${esc(T.priv)}">${svg("lock")}<span>${esc(T.priv)}</span></span></div>`;
   }).join(""):`<div class="soon">${esc(T.none)}</div>`;
   let c=`<div><span class="eyebrow">${T.c.email}</span><a href="mailto:${p.email}">${p.email}</a></div>`;
   document.getElementById("contact").innerHTML=c;
