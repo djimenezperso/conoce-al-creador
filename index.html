@@ -2,49 +2,41 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<title>Conoce al Creador · Diego Jiménez</title>
-<link rel="icon" href="avatar.jpg">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-</head>
-<body>
+<title>Diego Jiménez Peña</title>
+<meta name="description" content="Diego Jiménez Peña · CV">
+<link rel="icon" href="avatar.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
 <style>
-/* Layout: ficha personal con selector de "sombreros" — cada perfil cambia acento, CV y apps */
 :root{
   --bg:#F3F4F7; --surface:#FFFFFF; --fg:#15171E; --muted:#555B6B; --line:#DADDE5;
   --a-traductor:#2B55D9; --a-profesor:#A8620A; --a-programador:#17784F; --a-coach:#C43B1E;
-  --accent:var(--a-programador);
+  --accent:var(--a-traductor);
   --display:"Unbounded", "Arial Black", system-ui, sans-serif;
   --body:"Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+@media (prefers-color-scheme: dark){:root{
   --bg:#101218; --surface:#191C24; --fg:#ECEEF3; --muted:#A3A9B8; --line:#2C303B;
   --a-traductor:#7D9BFF; --a-profesor:#F0A94A; --a-programador:#4FCB92; --a-coach:#FF8466; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#101218; --surface:#191C24; --fg:#ECEEF3; --muted:#A3A9B8; --line:#2C303B;
-  --a-traductor:#7D9BFF; --a-profesor:#F0A94A; --a-programador:#4FCB92; --a-coach:#FF8466; color-scheme:dark}
-body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.55}
+*{box-sizing:border-box}
+img{max-width:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.55}
 .wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 64px;display:flex;flex-direction:column;gap:40px}
 .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-/* Cabecera */
 .hero{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center}
-.avatar{width:132px;height:132px;border-radius:50%;overflow:hidden;background:var(--surface);border:3px solid var(--accent);transition:border-color .3s;display:grid;place-items:center}
-.avatar img{width:100%;height:100%;object-fit:cover}
-.avatar .ini{font-family:var(--display);font-size:40px;font-weight:700;color:var(--accent);transition:color .3s}
+.avatar{width:132px;height:132px;border-radius:50%;overflow:hidden;background:var(--surface);border:3px solid var(--accent);transition:border-color .3s}
+.avatar img{width:100%;height:100%;object-fit:cover;display:block}
 .hero h1{font-family:var(--display);font-weight:700;font-size:clamp(30px,5vw,52px);line-height:1.05;margin:6px 0 10px;text-wrap:balance}
 .hero p{margin:0;color:var(--muted);max-width:60ch}
 @media (max-width:560px){.hero{grid-template-columns:1fr;justify-items:start}.avatar{width:104px;height:104px}}
-/* Selector de perfiles */
 .tabs{display:flex;flex-wrap:wrap;gap:8px}
-.tab{font:600 15px var(--body);color:var(--fg);background:var(--surface);border:1.5px solid var(--line);border-radius:999px;padding:11px 18px;min-height:44px;cursor:pointer;display:flex;align-items:center;gap:9px;transition:border-color .2s,background .2s}
+.tab{font:600 15px var(--body);color:var(--fg);background:var(--surface);border:1.5px solid var(--line);border-radius:999px;padding:11px 18px;min-height:44px;cursor:pointer;display:flex;align-items:center;gap:9px;transition:border-color .2s}
 .tab .dot{width:10px;height:10px;border-radius:50%;background:var(--c)}
 .tab:hover{border-color:var(--c)}
 .tab[aria-selected="true"]{border-color:var(--c);box-shadow:inset 0 0 0 1.5px var(--c)}
-.tab:focus-visible,.app:focus-visible,.copy:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
-/* Panel */
+.tab:focus-visible,.app:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 .panel{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:40px;align-items:start}
 @media (max-width:820px){.panel{grid-template-columns:1fr}}
 .role{font-family:var(--display);font-weight:500;font-size:clamp(24px,3.4vw,34px);margin:4px 0 12px;color:var(--accent);transition:color .3s;text-wrap:balance}
@@ -52,13 +44,15 @@ body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px
 .block{border-top:1px solid var(--line);padding-block:18px;display:grid;grid-template-columns:140px minmax(0,1fr);gap:16px}
 @media (max-width:560px){.block{grid-template-columns:1fr;gap:6px}}
 .block h3{margin:2px 0 0;font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.item{margin-bottom:14px}.item:last-child{margin-bottom:0}
-.item b{display:block;font-weight:600}
-.item span{color:var(--muted);font-size:14px;font-variant-numeric:tabular-nums}
+.items{display:flex;flex-direction:column;gap:14px}
+.item{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 16px}
+.item b{font-weight:600}
+.item .org{grid-column:1;color:var(--muted);font-size:14px}
+.item .when{grid-column:2;grid-row:1;font:500 12.5px var(--mono);color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums;padding-top:3px}
+.item .note{grid-column:1 / -1;font-size:14.5px;margin-top:4px;max-width:62ch}
+@media (max-width:420px){.item{grid-template-columns:1fr}.item .when{grid-column:1;grid-row:auto;padding-top:0}}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{font-size:14px;padding:4px 11px;border-radius:999px;background:var(--bg);border:1px solid var(--line)}
-.todo{display:inline-block;font:500 13px var(--mono);color:var(--muted);border:1.5px dashed var(--line);border-radius:6px;padding:3px 8px}
-/* Apps */
+.chip{font-size:14px;padding:4px 11px;border-radius:999px;background:var(--surface);border:1px solid var(--line)}
 .apps h2{font-family:var(--display);font-weight:500;font-size:20px;margin:4px 0 16px}
 .applist{display:flex;flex-direction:column;gap:10px}
 .app{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:14px;align-items:center;padding:14px 16px;background:var(--surface);border:1px solid var(--line);border-radius:14px;color:var(--fg);text-decoration:none;transition:border-color .2s,transform .2s}
@@ -69,47 +63,46 @@ body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px
 .app small{display:block;color:var(--muted);font-size:13.5px;line-height:1.4}
 .app .go{color:var(--muted)}
 .soon{padding:16px;border:1.5px dashed var(--line);border-radius:14px;color:var(--muted);font-size:14px}
-/* Contacto */
 .contact{border-top:1px solid var(--line);padding-top:24px;display:flex;flex-wrap:wrap;gap:24px 40px;align-items:baseline}
-.contact div{display:flex;flex-direction:column;gap:4px}
+.contact div{display:flex;flex-direction:column;gap:4px;min-width:0}
+.contact a,.contact span.v{color:var(--fg);text-decoration:none;overflow-wrap:anywhere}
+.contact a:hover{color:var(--accent)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
-
+</head>
+<body>
 <main class="wrap">
   <header class="hero">
-    <div class="avatar" id="avatar"><img src="avatar.jpg" alt="Foto de Diego Jiménez" width="220" height="220"></div>
+    <div class="avatar"><img src="avatar.jpg" alt="Diego Jiménez Peña" width="220" height="220"></div>
     <div>
-      <div class="eyebrow">¿Quieres conocer al creador?</div>
-      <h1 id="name">Diego Jiménez</h1>
-      <p id="tagline">Traduzco, enseño idiomas, programo apps y entreno a personas. Elige un perfil para ver mi trayectoria y las herramientas que he creado para cada uno.</p>
+      <div class="eyebrow" id="eyebrow"></div>
+      <h1>Diego Jiménez Peña</h1>
+      <p id="tagline"></p>
     </div>
   </header>
 
-  <nav class="tabs" role="tablist" aria-label="Perfiles" id="tabs"></nav>
+  <nav class="tabs" role="tablist" id="tabs"></nav>
 
   <section class="panel" role="tabpanel" id="panel" aria-live="polite">
     <div>
-      <div class="eyebrow">Perfil</div>
+      <div class="eyebrow" id="lblProfile"></div>
       <h2 class="role" id="role"></h2>
       <p class="summary" id="summary"></p>
       <div id="cv"></div>
     </div>
     <aside class="apps">
-      <div class="eyebrow">Hecho por mí</div>
-      <h2 id="appsTitle">Apps de este perfil</h2>
+      <div class="eyebrow" id="lblMade"></div>
+      <h2 id="lblApps"></h2>
       <div class="applist" id="apps"></div>
     </aside>
   </section>
 
-  <footer class="contact">
-    <div><span class="eyebrow">Email</span><span class="todo">[tu email público]</span></div>
-    <div><span class="eyebrow">LinkedIn</span><span class="todo">[enlace LinkedIn]</span></div>
-    <div><span class="eyebrow">GitHub</span><span class="todo">[enlace GitHub]</span></div>
-    <div><span class="eyebrow">Ubicación</span><span class="todo">[ciudad]</span></div>
-  </footer>
+  <footer class="contact" id="contact"></footer>
 </main>
 
 <script>
+/* ===== Idioma: ?lang=es | fr | en. Sin parámetro: idioma del navegador.
+   La versión ES no incluye el perfil de coach deportivo. ===== */
 const ICON={
   shirt:'<path d="M8 3 4 5.5 2 10l3 1.5V21h14v-9.5l3-1.5-2-4.5L16 3a4 4 0 0 1-8 0Z"/>',
   dumbbell:'<path d="M6 6v12M18 6v12M3 9v6M21 9v6M6 12h12"/>',
@@ -117,91 +110,280 @@ const ICON={
   tooth:'<path d="M7 3c-3 0-4 3-3.5 6 .4 2.6 1.5 4 2 7 .4 2.5 1 5 2.5 5s1.5-4 3-4 1.5 4 3 4 2.1-2.5 2.5-5c.5-3 1.6-4.4 2-7C19 6 18 3 15 3c-1.5 0-2 1-3 1s-1.5-1-3-1Z"/>',
   target:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
   sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
-  notebook:'<path d="M5 3h12a2 2 0 0 1 2 2v16H7a2 2 0 0 1-2-2V3Z"/><path d="M9 7h6M9 11h6"/>',
   arrow:'<path d="M7 17 17 7M8 7h9v9"/>'
 };
-const svg=(k)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON[k]}</svg>`;
+const svg=k=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON[k]}</svg>`;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
-/* Apps: textos breves, a corregir con la descripción real de cada una */
-const APPS={
-  armario:{n:"Armario Virtual",d:"Organiza tu ropa y combina prendas.",u:"https://armario-virtual-one.vercel.app",i:"shirt"},
-  entrenos:{n:"Entrenamientos",d:"Rutinas y planificación de entrenos.",u:"https://entrenamientos-web-two.vercel.app",i:"dumbbell"},
-  candid:{n:"Candidatures automatiques",d:"Automatiza el envío de candidaturas.",u:"https://candidatures-automatiques.vercel.app",i:"send"},
-  colordent:{n:"Colordent",d:"[descripción de Colordent]",u:"https://colordent-kappa.vercel.app",i:"tooth"},
-  kit:{n:"Kit de prospection",d:"Prospección comercial asistida.",u:"https://kit-prospection.vercel.app",i:"target"},
-  siar:{n:"Radiación SIAR",d:"Consulta de datos de radiación solar.",u:"https://radiacion-siar-pr.vercel.app",i:"sun"}
+const APP_URLS={
+  armario:["https://armario-virtual-one.vercel.app","shirt"],
+  entrenos:["https://entrenamientos-web-two.vercel.app","dumbbell"],
+  candid:["https://candidatures-automatiques.vercel.app","send"],
+  colordent:["https://colordent-kappa.vercel.app","tooth"],
+  kit:["https://kit-prospection.vercel.app","target"],
+  siar:["https://radiacion-siar-pr.vercel.app","sun"]
 };
 
-const PROFILES={
-  traductor:{label:"Traductor",role:"Traducción",color:"--a-traductor",
-    summary:"[Una o dos frases: qué idiomas traduces, especialidad (técnica, jurídica, audiovisual…) y para quién trabajas.]",
-    exp:[["[Puesto o cliente]","[fechas · ciudad]"]],
-    edu:[["[Título o certificación]","[centro · año]"]],
-    skills:["[Combinación de idiomas]","[Herramientas TAO]","[Especialidad]"],
-    langs:["Español","Francés","[otros]"],
-    apps:[]},
-  profesor:{label:"Profesor de idiomas",role:"Enseñanza de idiomas",color:"--a-profesor",
-    summary:"[Qué idiomas enseñas, a qué niveles y en qué formato: clases particulares, grupos, empresa, online.]",
-    exp:[["[Centro o academia]","[fechas · ciudad]"]],
-    edu:[["[Titulación docente]","[centro · año]"]],
-    skills:["[Idiomas que enseñas]","[Niveles MCER]","[Preparación de exámenes]"],
-    langs:["Español","Francés","[otros]"],
-    apps:[]},
-  programador:{label:"Programador",role:"Desarrollo de apps",color:"--a-programador",
-    summary:"Diseño y publico aplicaciones web prácticas, de la idea al despliegue. [Añade tu enfoque o especialidad.]",
-    exp:[["[Proyecto, empresa o freelance]","[fechas · ciudad]"]],
-    edu:[["[Formación en programación]","[centro · año]"]],
-    skills:["Python","HTML / CSS / JavaScript","Vercel","Apps con IA","[más tecnologías]"],
-    langs:["Español","Francés","[otros]"],
-    apps:["armario","entrenos","candid","colordent","kit","siar"]},
-  coach:{label:"Coach deportivo",role:"Entrenamiento personal",color:"--a-coach",
-    summary:"[Tu disciplina (fuerza, CrossFit, running…), a quién entrenas y cómo trabajas.]",
-    exp:[["[Box, gimnasio o clientes]","[fechas · ciudad]"]],
-    edu:[["[Certificación deportiva]","[entidad · año]"]],
-    skills:["Planificación de rutinas","Seguimiento de progreso","[más]"],
-    langs:["Español","Francés","[otros]"],
-    apps:["entrenos"]}
-};
+const PHONE_FR="+33 6 75 98 75 99", PHONE_ES="+34 673 061 357";
 
-const isTodo=s=>/^\[.*\]$/.test(s.trim());
-const txt=s=>isTodo(s)?`<span class="todo">${s}</span>`:s.replace(/(\[[^\]]+\])/g,'<span class="todo">$1</span>');
+const I18N={
+es:{
+  title:"Diego Jiménez Peña · Traductor, profesor de idiomas y creador de apps",
+  eyebrow:"¿Quieres conocer al creador?",
+  tagline:"Traduzco e interpreto, enseño idiomas y creo aplicaciones web. Elige un perfil para ver mi trayectoria y lo que he hecho en cada ámbito.",
+  profile:"Perfil", made:"Hecho por mí", apps:"Apps de este perfil", none:"Las apps de este perfil están en camino.",
+  h:{exp:"Experiencia",edu:"Formación",skills:"Competencias",langs:"Idiomas"},
+  c:{email:"Email",phone:"Teléfono",city:"Ciudad",social:"Redes"}, city:"París, Francia",
+  apps_txt:{armario:["Armario Virtual","Organiza tu ropa y combina looks."],entrenos:["Entrenamientos","Rutinas y planificación de entrenos."],candid:["Candidatures automatiques","Automatiza el envío de candidaturas."],colordent:["Colordent",""],kit:["Kit de prospection","Herramienta de prospección comercial."],siar:["Radiación SIAR","Consulta de datos de radiación solar."]},
+  order:["traductor","profesor","programador"],
+  P:{
+    traductor:{label:"Traductor e intérprete",role:"Traducción e interpretación",email:"djimenezinterpret@gmail.com",phones:[PHONE_ES,PHONE_FR],
+      summary:"Traductor e intérprete de español, inglés, francés y árabe, con base en París. Soy una persona dinámica, positiva y paciente que se entrega a lo que hace.",
+      exp:[["Intérprete","Christian Dior · París","Desde 11/2024"],
+           ["Traductor e intérprete","SNCF Transilien, línea B · París","Desde 07/2024","Juegos Olímpicos y espectáculos."],
+           ["Intérprete","Servicio de Vigilancia Aduanera · París","Desde 11/2023"],
+           ["Intérprete","Dependencias policiales · París","Desde 09/2019"],
+           ["Intérprete de conferencias","Intertrad / GFTIJ · París","Desde 09/2019"],
+           ["Traductor e intérprete","IMAGES 30 · París","2020–2021"],
+           ["Traductor e intérprete","Proviviendas · Granada","2016–2019"],
+           ["Traductor e intérprete autónomo","Granada, España","Desde 09/2014"]],
+      edu:[["LLCER Inglés","Sorbonne Nouvelle · París","2023–2024"],
+           ["VAE · Validación de la experiencia profesional","Sorbonne Nouvelle · París","2022–2023"],
+           ["C1 DELF/DALF","Prosodia · París","2021–2022"],
+           ["Filología Inglesa","UNED · España","2020–2022"],
+           ["Traducción e Interpretación (árabe y francés)","Universidad de Granada","2016–2020"],
+           ["C2 Cambridge English","Cambridge English · Granada","2016"]],
+      skills:["Interpretación de conferencias","Interpretación en ámbito policial y aduanero","Traducción","Herramientas de IA","Microsoft Office","HTML y CSS"],
+      langs:["Español · nativo","Inglés · nativo","Francés · C2","Árabe · A2"],
+      apps:[]},
+    profesor:{label:"Profesor de idiomas",role:"Enseñanza de idiomas",email:"djimenezenglish@gmail.com",phones:[PHONE_ES,PHONE_FR],
+      summary:"Profesor de inglés general y de negocios para empresas, escuelas y particulares. Soy una persona dinámica, positiva y paciente, dedicada plenamente a mi profesión.",
+      exp:[["Profesor de inglés","Stephenson Formation · París","Desde 2023"],
+           ["Profesor de inglés","EBM Business School · París","2022–2023"],
+           ["Profesor de inglés","École de la 2ème Chance · París","Desde 2022"],
+           ["Responsable Erasmus+ y profesor de inglés","E2C93 · París","Desde 2021"],
+           ["Profesor de inglés","Polylangues · París","2020–2022"],
+           ["Profesor de inglés","Angelio Academia · París","2019–2022"],
+           ["Profesor de inglés","PSG Paris Saint-Germain · París","2019–2020"],
+           ["Profesor de inglés","IRIS, Instituto de Relaciones Internacionales y Estratégicas · París","2019–2020"],
+           ["Profesor de inglés","URBAN ACT · París","2019–2020"],
+           ["Profesor de idiomas (Business)","New College Granada","2016–2019"],
+           ["Supervisor","Trinity College · Granada","2016–2019"],
+           ["Profesor particular","Freelance · Granada","Desde 2016"]],
+      edu:[["VAE · Validación de la experiencia profesional","Sorbonne Nouvelle · París","2022–2023"],
+           ["C1 DELF/DALF","Prosodia · París","2021–2022"],
+           ["Filología Inglesa","UNED · España","2020–2022"],
+           ["Traducción e Interpretación de Árabe","Universidad de Granada","2016–2020"],
+           ["C2 Cambridge English","Cambridge English · Granada","2016"]],
+      skills:["Inglés general y de negocios","Expresión y comprensión oral y escrita","Gestión de proyectos Erasmus+","Geopolítica","Marketing","Recursos Humanos"],
+      langs:["Español · nativo","Inglés · nativo","Francés · C2","Árabe · B1"],
+      apps:["kit"]},
+    programador:{label:"Creador de apps",role:"Aplicaciones web",email:"djimenezinterpret@gmail.com",phones:[PHONE_ES,PHONE_FR],
+      summary:"Diseño y publico aplicaciones web prácticas con ayuda de la inteligencia artificial, de la idea a la publicación: herramientas para el día a día, la formación y la búsqueda de clientes.",
+      exp:[],edu:[],
+      skills:["HTML y CSS","Python","Herramientas de IA","GitHub","Vercel","Diseño de interfaces","Adobe XD","Gimp"],
+      langs:["Español · nativo","Inglés · nativo","Francés · C2"],
+      apps:["armario","entrenos","candid","colordent","kit","siar"]}
+  }
+},
+fr:{
+  title:"Diego Jiménez Peña · Traducteur, professeur de langues, coach sportif",
+  eyebrow:"Envie de connaître le créateur ?",
+  tagline:"Je traduis et j'interprète, j'enseigne les langues, j'entraîne des sportifs et je crée des applications web. Choisissez un profil pour découvrir mon parcours.",
+  profile:"Profil", made:"Fait par moi", apps:"Applications de ce profil", none:"Les applications de ce profil arrivent bientôt.",
+  h:{exp:"Expérience",edu:"Formation",skills:"Compétences",langs:"Langues"},
+  c:{email:"Email",phone:"Téléphone",city:"Ville",social:"Réseaux"}, city:"Paris, France",
+  apps_txt:{armario:["Armario Virtual","Organisez votre garde-robe et vos tenues."],entrenos:["Entrenamientos","Programmes et planification d'entraînement."],candid:["Candidatures automatiques","Automatise l'envoi de candidatures."],colordent:["Colordent",""],kit:["Kit de prospection","Outil de prospection commerciale."],siar:["Radiación SIAR","Consultation de données de rayonnement solaire."]},
+  order:["profesor","traductor","coach","programador"],
+  P:{
+    traductor:{label:"Traducteur-interprète",role:"Traduction et interprétation",email:"djimenezinterpret@gmail.com",phones:[PHONE_FR],
+      summary:"Traducteur et interprète espagnol, anglais, français et arabe, basé à Paris. Je suis une personne dynamique, positive et patiente, pleinement investie dans mon travail.",
+      exp:[["Traducteur-interprète","Dior · Paris","Depuis 2025"],
+           ["Traducteur-interprète","SNCF Transilien, ligne B · Paris","Depuis 2024","Jeux Olympiques et spectacles."],
+           ["Interprète","Service de surveillance douanière · Paris","Depuis 2023"],
+           ["Traducteur-interprète","Préfecture de Police · Paris","Depuis 2022"],
+           ["Interprète de conférence","Intertrad · Paris","Depuis 2022"],
+           ["Traducteur-interprète","IMAGES 30 · Paris","2020–2021"],
+           ["Traducteur-interprète","Proviviendas · Grenade","2016–2019"],
+           ["Traducteur-interprète indépendant","Grenade, Espagne","Depuis 2016"]],
+      edu:[["LLCER Anglais","Sorbonne Nouvelle · Paris","2023–2024"],
+           ["VAE · Validation des acquis de l'expérience","Sorbonne Nouvelle · Paris","2022–2023"],
+           ["C1 DELF/DALF","Prosodia · Paris","2021–2022"],
+           ["Philologie anglaise","UNED · Espagne","2020–2022"],
+           ["Traduction et interprétation (arabe et français)","Université de Grenade","2016–2020"],
+           ["C2 Cambridge English","Cambridge English · Grenade","2016"]],
+      skills:["Interprétation de conférence","Interprétation en milieu policier et douanier","Traduction","Outils d'IA","Microsoft Office","HTML et CSS"],
+      langs:["Espagnol · natif","Anglais · natif","Français · C2","Arabe · A2"],
+      apps:[]},
+    profesor:{label:"Professeur de langues",role:"Enseignement des langues",email:"djimenezenglish@gmail.com",phones:[PHONE_FR],
+      summary:"Professeur d'anglais général et des affaires pour entreprises, écoles et particuliers. Je suis quelqu'un de dynamique, positif et patient, pleinement dévoué à mon métier.",
+      exp:[["Professeur d'anglais","Stephenson Formation · Paris","Depuis 2023"],
+           ["Professeur d'anglais","EBM Business School · Paris","2022–2023"],
+           ["Professeur d'anglais","École de la 2ème Chance · Paris","Depuis 2022"],
+           ["Responsable Erasmus+ et professeur d'anglais","E2C93 · Paris","Depuis 2021"],
+           ["Professeur d'anglais","Polylangues · Paris","2020–2022"],
+           ["Professeur d'anglais","Angelio Academia · Paris","2019–2022"],
+           ["Professeur d'anglais","PSG Paris Saint-Germain · Paris","2019–2020"],
+           ["Professeur d'anglais","IRIS, Institut de Relations Internationales et Stratégiques · Paris","2019–2020"],
+           ["Professeur d'anglais","URBAN ACT · Paris","2019–2020"],
+           ["Professeur de langues (Business)","New College Granada","2016–2019"],
+           ["Superviseur","Trinity College · Grenade","2016–2019"],
+           ["Professeur particulier","Freelance · Grenade","Depuis 2016"]],
+      edu:[["VAE · Validation des acquis de l'expérience","Sorbonne Nouvelle · Paris","2022–2023"],
+           ["C1 DELF/DALF","Prosodia · Paris","2021–2022"],
+           ["Philologie anglaise","UNED · Espagne","2020–2022"],
+           ["Traduction et interprétation d'arabe","Université de Grenade","2016–2020"],
+           ["C2 Cambridge English","Cambridge English · Grenade","2016"]],
+      skills:["Anglais général et des affaires","Production et compréhension orale et écrite","Gestion de projets Erasmus+","Géopolitique","Marketing","Ressources humaines"],
+      langs:["Espagnol · natif","Anglais · natif","Français · C2","Arabe · B1"],
+      apps:["kit"]},
+    coach:{label:"Coach sportif",role:"Coaching sportif",email:"djimenezcoach@gmail.com",phones:[PHONE_FR],social:"djimenez.cf",
+      summary:"Coach sportif spécialisé en functional training et CrossFit, pour particuliers et entreprises, en présentiel et en ligne. Je suis une personne dynamique, positive et patiente qui se consacre à son métier.",
+      exp:[["Coach sportif indépendant","Functional training · Paris","Depuis 2020","Séances personnalisées pour particuliers et entreprises, ateliers sportifs de teambuilding, et coaching en ligne avec programmes sur mesure, suivi à distance et ajustement des planifications."],
+           ["Coach CrossFit","The Factory Box","2018","Cours collectifs, WOD adaptés à chaque niveau, correction technique en haltérophilie et gymnastique (snatch, clean & jerk, toes-to-bar) et suivi des performances."],
+           ["Coach musculation et préparation physique","TNT Granada","2016","Programmes personnalisés pour prise de masse, perte de poids et condition physique, séances individuelles et collectives."],
+           ["Athlète","Arts martiaux, rugby, CrossFit","Depuis 2016","Judo et karaté, puis rugby, avant de me spécialiser en CrossFit à niveau compétitif : haltérophilie, gymnastique et conditioning à haute intensité."]],
+      edu:[["Técnico en Actividades Físicas y Animación Deportivas","Espagne",""],
+           ["Université de Grenade","Espagne",""],
+           ["Sorbonne Nouvelle","Paris",""]],
+      skills:["Programmation d'entraînement","Coaching individuel","Coaching en ligne","Teambuilding sportif","Animation de groupes","Gestion de clients","Adaptation aux publics","Création de contenus"],
+      langs:["Français · C2","Espagnol · natif","Anglais · natif"],
+      apps:["entrenos"]},
+    programador:{label:"Créateur d'apps",role:"Applications web",email:"djimenezinterpret@gmail.com",phones:[PHONE_FR],
+      summary:"Je conçois et publie des applications web pratiques avec l'aide de l'intelligence artificielle, de l'idée à la mise en ligne : outils du quotidien, sport, formation et prospection.",
+      exp:[],edu:[],
+      skills:["HTML et CSS","Python","Outils d'IA","GitHub","Vercel","Design d'interfaces","Adobe XD","Gimp"],
+      langs:["Espagnol · natif","Anglais · natif","Français · C2"],
+      apps:["armario","entrenos","candid","colordent","kit","siar"]}
+  }
+},
+en:{
+  title:"Diego Jiménez Peña · Translator, language teacher, sports coach",
+  eyebrow:"Want to meet the creator?",
+  tagline:"I translate and interpret, teach languages, coach athletes and build web apps. Pick a profile to see my background in each field.",
+  profile:"Profile", made:"Made by me", apps:"Apps for this profile", none:"Apps for this profile are on the way.",
+  h:{exp:"Experience",edu:"Education",skills:"Skills",langs:"Languages"},
+  c:{email:"Email",phone:"Phone",city:"City",social:"Social"}, city:"Paris, France",
+  apps_txt:{armario:["Armario Virtual","Organise your wardrobe and outfits."],entrenos:["Entrenamientos","Training plans and workout scheduling."],candid:["Candidatures automatiques","Automates job applications."],colordent:["Colordent",""],kit:["Kit de prospection","Sales prospecting toolkit."],siar:["Radiación SIAR","Solar radiation data lookup."]},
+  order:["traductor","profesor","coach","programador"],
+  P:{
+    traductor:{label:"Translator & interpreter",role:"Translation and interpreting",email:"djimenezinterpret@gmail.com",phones:[PHONE_FR],
+      summary:"Spanish, English, French and Arabic translator and interpreter based in Paris. I am a dynamic person who is fully dedicated to my work.",
+      exp:[["Translator & Interpreter","Dior · Paris","Since 2025"],
+           ["Translator & Interpreter","SNCF Transilien, line B · Paris","Since 2024","Olympic Games and live events."],
+           ["Interpreter","Customs Surveillance Service · Paris","Since 2023"],
+           ["Translator & Interpreter","Préfecture de Police · Paris","Since 2022"],
+           ["Conference Interpreter","Intertrad · Paris","Since 2022"],
+           ["Translator & Interpreter","IMAGES 30 · Paris","2020–2021"],
+           ["Translator & Interpreter","Proviviendas · Granada","2016–2019"],
+           ["Freelance Translator & Interpreter","Granada, Spain","Since 2016"]],
+      edu:[["LLCER English","Sorbonne Nouvelle · Paris","2023–2024"],
+           ["VAE · Validation of Professional Experience","Sorbonne Nouvelle · Paris","2022–2023"],
+           ["C1 DELF/DALF","Prosodia · Paris","2021–2022"],
+           ["English Philology","UNED · Spain","2020–2022"],
+           ["Translation and Interpreting (Arabic & French)","University of Granada","2016–2020"],
+           ["C2 Cambridge English","Cambridge English · Granada","2016"]],
+      skills:["Conference interpreting","Police and customs interpreting","Translation","AI tools","Microsoft Office","HTML & CSS"],
+      langs:["English · native","Spanish · native","French · C2","Arabic · A2"],
+      apps:[]},
+    profesor:{label:"Language teacher",role:"Language teaching",email:"djimenezenglish@gmail.com",phones:[PHONE_FR],
+      summary:"General and business English teacher for companies, schools and private students. I am dynamic, positive and patient, and fully dedicated to my profession.",
+      exp:[["English Teacher","Stephenson Formation · Paris","Since 2023"],
+           ["English Teacher","EBM Business School · Paris","2022–2023"],
+           ["English Teacher","École de la 2ème Chance · Paris","Since 2022"],
+           ["Erasmus+ Coordinator & English Teacher","E2C93 · Paris","Since 2021"],
+           ["English Teacher","Polylangues · Paris","2020–2022"],
+           ["English Teacher","Angelio Academia · Paris","2019–2022"],
+           ["English Teacher","PSG Paris Saint-Germain · Paris","2019–2020"],
+           ["English Teacher","IRIS, Institute for International and Strategic Relations · Paris","2019–2020"],
+           ["English Teacher","URBAN ACT · Paris","2019–2020"],
+           ["Business Language Teacher","New College Granada","2016–2019"],
+           ["Supervisor","Trinity College · Granada","2016–2019"],
+           ["Private Tutor","Freelance · Granada","Since 2016"]],
+      edu:[["VAE · Validation of Professional Experience","Sorbonne Nouvelle · Paris","2022–2023"],
+           ["C1 DELF/DALF","Prosodia · Paris","2021–2022"],
+           ["English Philology","UNED · Spain","2020–2022"],
+           ["Translation and Interpreting (Arabic)","University of Granada","2016–2020"],
+           ["C2 Cambridge English","Cambridge English · Granada","2016"]],
+      skills:["General and business English","Speaking, listening, reading and writing","Erasmus+ project management","Geopolitics","Marketing","Human resources"],
+      langs:["English · native","Spanish · native","French · C2","Arabic · B1"],
+      apps:["kit"]},
+    coach:{label:"Sports coach",role:"Sports coaching",email:"djimenezcoach@gmail.com",phones:[PHONE_FR],social:"djimenez.cf",
+      summary:"Sports coach specialising in functional training and CrossFit, for individuals and companies, in person and online. I am dynamic, positive and patient, and dedicated to my work.",
+      exp:[["Independent Sports Coach","Functional training · Paris","Since 2020","Personalised sessions for individuals and companies, team-building workshops, and online coaching with tailored programmes, remote follow-up and plan adjustments."],
+           ["CrossFit Coach","The Factory Box","2018","Group classes, scaled WODs, technical coaching in weightlifting and gymnastics (snatch, clean & jerk, toes-to-bar) and performance tracking."],
+           ["Strength & Conditioning Coach","TNT Granada","2016","Personalised programmes for muscle gain, weight loss and fitness; individual and group sessions."],
+           ["Athlete","Martial arts, rugby, CrossFit","Since 2016","Judo and karate, then rugby, before specialising in competitive-level CrossFit: weightlifting, gymnastics and high-intensity conditioning."]],
+      edu:[["Técnico en Actividades Físicas y Animación Deportivas","Spain",""],
+           ["University of Granada","Spain",""],
+           ["Sorbonne Nouvelle","Paris",""]],
+      skills:["Training programming","One-to-one coaching","Online coaching","Sports team building","Group classes","Client management","Adapting to every audience","Content creation"],
+      langs:["French · C2","Spanish · native","English · native"],
+      apps:["entrenos"]},
+    programador:{label:"App builder",role:"Web apps",email:"djimenezinterpret@gmail.com",phones:[PHONE_FR],
+      summary:"I design and publish practical web apps with the help of AI, from idea to launch: everyday tools, sport, training and sales prospecting.",
+      exp:[],edu:[],
+      skills:["HTML & CSS","Python","AI tools","GitHub","Vercel","Interface design","Adobe XD","Gimp"],
+      langs:["English · native","Spanish · native","French · C2"],
+      apps:["armario","entrenos","candid","colordent","kit","siar"]}
+  }
+}};
+const COLORS={traductor:"--a-traductor",profesor:"--a-profesor",programador:"--a-programador",coach:"--a-coach"};
 
-const tabsEl=document.getElementById('tabs');
-Object.entries(PROFILES).forEach(([k,p])=>{
-  const b=document.createElement('button');
-  b.className='tab';b.id='tab-'+k;b.setAttribute('role','tab');b.dataset.k=k;
-  b.style.setProperty('--c',`var(${p.color})`);
-  b.innerHTML=`<span class="dot"></span>${p.label}`;
-  b.addEventListener('click',()=>show(k,true));
+/* Elegir idioma */
+let lang="";
+try{lang=(new URLSearchParams(location.search).get("lang")||"").toLowerCase();}catch(e){}
+if(!I18N[lang]){const nl=(navigator.language||"es").slice(0,2).toLowerCase(); lang=I18N[nl]?nl:"es";}
+const T=I18N[lang];
+document.documentElement.lang=lang;
+document.title=T.title;
+document.getElementById("eyebrow").textContent=T.eyebrow;
+document.getElementById("tagline").textContent=T.tagline;
+document.getElementById("lblProfile").textContent=T.profile;
+document.getElementById("lblMade").textContent=T.made;
+document.getElementById("lblApps").textContent=T.apps;
+
+const tabsEl=document.getElementById("tabs");
+tabsEl.setAttribute("aria-label",T.profile);
+T.order.forEach(k=>{
+  const b=document.createElement("button");
+  b.className="tab";b.id="tab-"+k;b.type="button";b.setAttribute("role","tab");b.dataset.k=k;
+  b.style.setProperty("--c",`var(${COLORS[k]})`);
+  b.innerHTML=`<span class="dot"></span>${esc(T.P[k].label)}`;
+  b.addEventListener("click",()=>show(k,true));
   tabsEl.appendChild(b);
 });
 
 function show(k,user){
-  const p=PROFILES[k]; if(!p) return;
-  document.documentElement.style.setProperty('--accent',`var(${p.color})`);
-  tabsEl.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-selected',t.dataset.k===k));
-  document.getElementById('panel').setAttribute('aria-labelledby','tab-'+k);
-  document.getElementById('role').textContent=p.role;
-  document.getElementById('summary').innerHTML=txt(p.summary);
-  const items=a=>a.map(([b,s])=>`<div class="item"><b>${txt(b)}</b><span>${txt(s)}</span></div>`).join('');
-  const chips=a=>`<div class="chips">${a.map(c=>isTodo(c)?`<span class="todo">${c}</span>`:`<span class="chip">${c}</span>`).join('')}</div>`;
-  document.getElementById('cv').innerHTML=
-    `<div class="block"><h3>Experiencia</h3><div>${items(p.exp)}</div></div>`+
-    `<div class="block"><h3>Formación</h3><div>${items(p.edu)}</div></div>`+
-    `<div class="block"><h3>Habilidades</h3>${chips(p.skills)}</div>`+
-    `<div class="block"><h3>Idiomas</h3>${chips(p.langs)}</div>`;
-  const apps=document.getElementById('apps');
-  apps.innerHTML=p.apps.length?p.apps.map(id=>{const a=APPS[id];return `<a class="app" href="${a.u}" target="_blank" rel="noopener"><span class="ic">${svg(a.i)}</span><span><b>${a.n}</b><small>${txt(a.d)}</small></span><span class="go">${svg('arrow')}</span></a>`}).join('')
-    :`<div class="soon">Aún no hay apps publicadas para este perfil. <span class="todo">[añade aquí tus herramientas o materiales]</span></div>`;
-  if(user){ try{history.replaceState(null,'','#'+k)}catch(e){} try{localStorage.setItem('perfil',k)}catch(e){} }
+  const p=T.P[k]; if(!p) return;
+  document.documentElement.style.setProperty("--accent",`var(${COLORS[k]})`);
+  tabsEl.querySelectorAll(".tab").forEach(t=>t.setAttribute("aria-selected",t.dataset.k===k));
+  document.getElementById("panel").setAttribute("aria-labelledby","tab-"+k);
+  document.getElementById("role").textContent=p.role;
+  document.getElementById("summary").textContent=p.summary;
+  const items=a=>`<div class="items">${a.map(([t,o,w,n])=>`<div class="item"><b>${esc(t)}</b>${w?`<span class="when">${esc(w)}</span>`:""}<span class="org">${esc(o)}</span>${n?`<p class="note" style="margin:4px 0 0">${esc(n)}</p>`:""}</div>`).join("")}</div>`;
+  const chips=a=>`<div class="chips">${a.map(c=>`<span class="chip">${esc(c)}</span>`).join("")}</div>`;
+  let html="";
+  if(p.exp.length) html+=`<div class="block"><h3>${T.h.exp}</h3>${items(p.exp)}</div>`;
+  if(p.edu.length) html+=`<div class="block"><h3>${T.h.edu}</h3>${items(p.edu)}</div>`;
+  html+=`<div class="block"><h3>${T.h.skills}</h3>${chips(p.skills)}</div>`;
+  html+=`<div class="block"><h3>${T.h.langs}</h3>${chips(p.langs)}</div>`;
+  document.getElementById("cv").innerHTML=html;
+  document.getElementById("apps").innerHTML=p.apps.length?p.apps.map(id=>{
+    const [u,i]=APP_URLS[id],[n,d]=T.apps_txt[id];
+    return `<a class="app" href="${u}" target="_blank" rel="noopener"><span class="ic">${svg(i)}</span><span><b>${esc(n)}</b>${d?`<small>${esc(d)}</small>`:""}</span><span class="go">${svg("arrow")}</span></a>`;
+  }).join(""):`<div class="soon">${esc(T.none)}</div>`;
+  let c=`<div><span class="eyebrow">${T.c.email}</span><a href="mailto:${p.email}">${p.email}</a></div>`;
+  c+=`<div><span class="eyebrow">${T.c.phone}</span>${p.phones.map(ph=>`<a href="tel:${ph.replace(/\s/g,"")}">${ph}</a>`).join("")}</div>`;
+  if(p.social) c+=`<div><span class="eyebrow">${T.c.social}</span><span class="v">${esc(p.social)}</span></div>`;
+  c+=`<div><span class="eyebrow">${T.c.city}</span><span class="v">${esc(T.city)}</span></div>`;
+  document.getElementById("contact").innerHTML=c;
+  if(user){ try{history.replaceState(null,"",location.search+"#"+k)}catch(e){} }
 }
 
-let start='programador';
 const h=location.hash.slice(1);
-if(PROFILES[h]) start=h; else { try{const s=localStorage.getItem('perfil'); if(PROFILES[s]) start=s;}catch(e){} }
-show(start,false);
-window.addEventListener('hashchange',()=>show(location.hash.slice(1),false));
+show(T.P[h]?h:T.order[0],false);
+window.addEventListener("hashchange",()=>{const x=location.hash.slice(1); if(T.P[x]) show(x,false);});
 </script>
-
 </body>
 </html>
