@@ -61,6 +61,9 @@ body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-
 .app .ic svg{width:22px;height:22px}
 .app b{display:block;font-weight:600}
 .app small{display:block;color:var(--muted);font-size:13.5px;line-height:1.4}
+.app .uses{display:inline-block;margin-top:4px;font:500 12px var(--mono);color:var(--accent);font-variant-numeric:tabular-nums;transition:color .3s}
+.stat-line{margin:-6px 0 16px;font-size:14.5px;color:var(--muted)}
+.stat-line strong{font:600 15px var(--mono);color:var(--fg);font-variant-numeric:tabular-nums}
 .app .go{color:var(--muted);display:flex}.app .go svg{width:18px;height:18px}
 .app-priv:hover{border-color:var(--line);transform:none}
 .app .tag{display:flex;align-items:center;gap:5px;font:500 11.5px var(--mono);color:var(--muted);white-space:nowrap}
@@ -97,6 +100,7 @@ body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-
     <aside class="apps">
       <div class="eyebrow" id="lblMade"></div>
       <h2 id="lblApps"></h2>
+      <p class="stat-line" id="appsStats" hidden></p>
       <div class="applist" id="apps"></div>
     </aside>
   </section>
@@ -133,6 +137,10 @@ const APP_URLS={
 };
 
 
+/* Cifras de uso: resumen público y anónimo de la app de estadísticas */
+const STATS_URL="https://estadisticas-apps.vercel.app/api/public?r=30d";
+let STATS=null, CUR=null;
+let fmt=n=>String(n);
 const I18N={
 es:{
   title:"Diego Jiménez Peña · Traductor, profesor de idiomas y creador de apps",
@@ -143,6 +151,7 @@ es:{
   c:{email:"Email",phone:"Teléfono",city:"Ciudad",social:"Redes"}, city:"París, Francia",
   apps_txt:{armario:["Armario virtual con IA","Organiza la ropa y propone conjuntos."],entrenos:["Planificador de entrenamientos","Rutinas, sesiones y seguimiento."],halte:["Comparador de halterofilia","Analiza y compara marcas y levantamientos."],candid:["Automatización de candidaturas","Prepara y envía solicitudes de empleo."],colordent:["Sistema para clínica dental","Herramienta de gestión para el sector salud."],kit:["Sistema de prospección comercial","Captación de clientes para centros de formación."],siar:["Panel de datos climáticos","Consulta y visualización de datos de radiación solar."]},
   priv:"Uso interno",
+  st:{v:n=>n===1?"1 visita":`${fmt(n)} visitas`,sum:n=>`<strong>${fmt(n)}</strong> visitas a mis apps en los últimos 30 días.`,loc:"es-ES"},
   order:["traductor","profesor","programador"],
   P:{
     traductor:{label:"Traductor e intérprete",role:"Traducción e interpretación",email:"djimenezpenapro@gmail.com",
@@ -203,6 +212,7 @@ fr:{
   c:{email:"Email",phone:"Téléphone",city:"Ville",social:"Réseaux"}, city:"Paris, France",
   apps_txt:{armario:["Garde-robe virtuelle avec IA","Organise les vêtements et propose des tenues."],entrenos:["Planificateur d'entraînement","Programmes, séances et suivi."],halte:["Comparateur d'haltérophilie","Analyse et compare les performances."],candid:["Automatisation de candidatures","Prépare et envoie des candidatures."],colordent:["Système pour cabinet dentaire","Outil de gestion pour le secteur de la santé."],kit:["Système de prospection commerciale","Acquisition de clients pour organismes de formation."],siar:["Tableau de données climatiques","Consultation et visualisation du rayonnement solaire."]},
   priv:"Usage interne",
+  st:{v:n=>n===1?"1 visite":`${fmt(n)} visites`,sum:n=>`<strong>${fmt(n)}</strong> visites sur mes applications ces 30 derniers jours.`,loc:"fr-FR"},
   order:["profesor","traductor","coach","programador"],
   P:{
     traductor:{label:"Traducteur-interprète",role:"Traduction et interprétation",email:"djimenezpenapro@gmail.com",
@@ -275,6 +285,7 @@ en:{
   c:{email:"Email",phone:"Phone",city:"City",social:"Social"}, city:"Paris, France",
   apps_txt:{armario:["AI virtual wardrobe","Organises clothes and suggests outfits."],entrenos:["Training planner","Workouts, sessions and progress tracking."],halte:["Weightlifting comparator","Analyses and compares lifts and records."],candid:["Job application automation","Prepares and sends job applications."],colordent:["Dental clinic system","Management tool for the healthcare sector."],kit:["Sales prospecting system","Client acquisition for training providers."],siar:["Climate data dashboard","Solar radiation lookup and charts."]},
   priv:"Internal use",
+  st:{v:n=>n===1?"1 visit":`${fmt(n)} visits`,sum:n=>`<strong>${fmt(n)}</strong> visits to my apps in the last 30 days.`,loc:"en-GB"},
   order:["traductor","profesor","coach","programador"],
   P:{
     traductor:{label:"Translator & interpreter",role:"Translation and interpreting",email:"djimenezpenapro@gmail.com",
@@ -345,6 +356,7 @@ let lang="";
 try{lang=(new URLSearchParams(location.search).get("lang")||"").toLowerCase();}catch(e){}
 if(!I18N[lang]){const nl=(navigator.language||"es").slice(0,2).toLowerCase(); lang=I18N[nl]?nl:"es";}
 const T=I18N[lang];
+fmt=n=>new Intl.NumberFormat(T.st.loc).format(n||0);
 document.documentElement.lang=lang;
 document.title=T.title;
 document.getElementById("eyebrow").textContent=T.eyebrow;
@@ -366,6 +378,9 @@ T.order.forEach(k=>{
 
 function show(k,user){
   const p=T.P[k]; if(!p) return;
+  CUR=k;
+  const sl=document.getElementById("appsStats"), tot=STATS&&STATS.totals?STATS.totals.pageviews:0;
+  sl.hidden=!(tot>0); if(tot>0) sl.innerHTML=T.st.sum(tot);
   document.documentElement.style.setProperty("--accent",`var(${COLORS[k]})`);
   tabsEl.querySelectorAll(".tab").forEach(t=>t.setAttribute("aria-selected",t.dataset.k===k));
   document.getElementById("panel").setAttribute("aria-labelledby","tab-"+k);
@@ -381,7 +396,8 @@ function show(k,user){
   document.getElementById("cv").innerHTML=html;
   document.getElementById("apps").innerHTML=p.apps.length?p.apps.map(id=>{
     const [u,i]=APP_URLS[id],[n,d]=T.apps_txt[id];
-    const inner=`<span class="ic">${svg(i)}</span><span><b>${esc(n)}</b>${d?`<small>${esc(d)}</small>`:""}</span>`;
+    const pv=STATS&&STATS.apps&&STATS.apps[id]?STATS.apps[id].pageviews:0;
+    const inner=`<span class="ic">${svg(i)}</span><span><b>${esc(n)}</b>${d?`<small>${esc(d)}</small>`:""}${pv>0?`<span class="uses">${T.st.v(pv)} · 30 d</span>`:""}</span>`;
     return u?`<a class="app" href="${u}" target="_blank" rel="noopener">${inner}<span class="go">${svg("arrow")}</span></a>`
             :`<div class="app app-priv">${inner}<span class="tag" title="${esc(T.priv)}">${svg("lock")}<span>${esc(T.priv)}</span></span></div>`;
   }).join(""):`<div class="soon">${esc(T.none)}</div>`;
@@ -393,6 +409,7 @@ function show(k,user){
 const h=location.hash.slice(1);
 show(T.P[h]?h:T.order[0],false);
 window.addEventListener("hashchange",()=>{const x=location.hash.slice(1); if(T.P[x]) show(x,false);});
+fetch(STATS_URL).then(r=>r.ok?r.json():null).then(d=>{ if(d&&d.ok){STATS=d; show(CUR,false);} }).catch(()=>{});
 </script>
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
 <script defer src="/_vercel/insights/script.js"></script>
