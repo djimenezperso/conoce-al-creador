@@ -26,18 +26,17 @@ body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-
 .wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 64px;display:flex;flex-direction:column;gap:40px}
 .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .hero{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center}
-.look{position:relative;display:block;width:150px;aspect-ratio:3/4;border-radius:18px;overflow:hidden;background:var(--surface);border:3px solid var(--accent);transition:border-color .3s;color:var(--fg);text-decoration:none;flex:none;max-width:100%}
-.look img{width:100%;height:100%;object-fit:cover;display:block}
-.look.full img{transform:scale(1.3);transform-origin:50% 53%}
-.wx{position:absolute;left:6px;right:6px;bottom:6px;display:flex;align-items:center;justify-content:center;gap:6px;padding:5px 8px;border-radius:999px;background:color-mix(in srgb,var(--surface) 88%,transparent);backdrop-filter:blur(6px);font:600 12.5px var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.look{position:relative;display:block;width:150px;aspect-ratio:2/3;border-radius:18px;overflow:hidden;background:var(--surface);border:3px solid var(--accent);transition:border-color .3s;color:var(--fg);text-decoration:none;flex:none;max-width:100%}
+.look img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;display:block}
+.look-wrap{display:flex;flex-direction:column;align-items:flex-start;gap:8px;width:150px}
+.wx{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font:600 12.5px var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
 .wx .e{font-size:15px;line-height:1}
 .wx small{font-weight:500;color:var(--muted);font-size:11px}
-.look-cap{display:block;margin-top:8px;font:500 11.5px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:center;width:150px}
-.look-wrap{display:flex;flex-direction:column}
+.look-cap{display:block;font:500 11.5px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .look:hover{border-color:var(--fg)}
 .hero h1{font-family:var(--display);font-weight:700;font-size:clamp(30px,5vw,52px);line-height:1.05;margin:6px 0 10px;text-wrap:balance}
 .hero p{margin:0;color:var(--muted);max-width:60ch}
-@media (max-width:560px){.hero{grid-template-columns:1fr;justify-items:start}.look{width:124px}.look-cap{width:auto;text-align:left}}
+@media (max-width:560px){.hero{grid-template-columns:1fr;justify-items:start}.look,.look-wrap{width:130px}}
 .tabs{display:flex;flex-wrap:wrap;gap:8px}
 .tab{font:600 15px var(--body);color:var(--fg);background:var(--surface);border:1.5px solid var(--line);border-radius:999px;padding:11px 18px;min-height:44px;cursor:pointer;display:flex;align-items:center;gap:9px;transition:border-color .2s}
 .tab .dot{width:10px;height:10px;border-radius:50%;background:var(--c)}
@@ -97,9 +96,9 @@ window.va('beforeSend',function(ev){try{if(localStorage.getItem('va-soy-yo')){va
     <div class="look-wrap">
       <a class="look" id="look" href="https://armario-virtual-one.vercel.app" target="_blank" rel="noopener">
         <img id="lookImg" src="avatar.jpg" alt="Diego Jiménez Peña" width="220" height="293">
-        <span class="wx" id="wx" hidden></span>
       </a>
       <span class="look-cap" id="lookCap" hidden></span>
+      <span class="wx" id="wx" hidden></span>
     </div>
     <div>
       <div class="eyebrow" id="eyebrow"></div>
@@ -439,7 +438,7 @@ fetch("https://armario-virtual-one.vercel.app/api/webhook?creador=1").then(r=>r.
   if(!d||!d.ok) return;
   if(d.imagen){
     const im=new Image();
-    im.onload=()=>{const el=document.getElementById("lookImg");el.src=d.imagen;el.alt=T.lk.alt;document.getElementById("look").classList.add("full");
+    im.onload=()=>{const el=document.getElementById("lookImg");el.src=d.imagen;el.alt=T.lk.alt;
       const cap=document.getElementById("lookCap");
       let lbl=T.lk.hoy;
       if(!d.es_de_hoy&&d.fecha_imagen){try{lbl=T.lk.dia(new Date(d.fecha_imagen+"T12:00:00").toLocaleDateString(T.st.loc,{day:"numeric",month:"short"}));}catch(e){}}
