@@ -30,6 +30,7 @@ body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-
 .card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
 .ov{position:absolute;left:8px;right:8px;padding:5px 9px;border-radius:12px;background:color-mix(in srgb,var(--surface) 88%,transparent);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .ov-top{top:8px;right:auto;border-radius:999px}
+.wxi{white-space:nowrap;font:600 10.5px var(--mono);font-variant-numeric:tabular-nums;margin-left:2px}
 .ov-bot{bottom:6px;left:6px;right:6px;padding:3px 6px;font-size:10.5px;line-height:1.3;text-align:center;color:var(--fg)}
 .wxc{display:flex;align-items:center;gap:10px;padding:10px 14px}
 .wxc .big{font-size:28px;line-height:1}
@@ -62,7 +63,7 @@ body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-
 .hl .n{font:700 38px/1 var(--display);color:var(--accent);transition:color .3s;font-variant-numeric:tabular-nums}
 .hl .l{margin-top:6px;font-weight:600;font-size:14.5px;line-height:1.3}
 .hl .s{margin-top:4px;font:500 11.5px var(--mono);letter-spacing:.04em;color:var(--muted)}
-@media (max-width:900px){.hero{grid-template-columns:auto minmax(0,1fr);grid-template-areas:"photo side" "text text";align-items:stretch}.hero .look-wrap{align-self:stretch}.hero .look{flex:1;aspect-ratio:auto;min-height:195px}.hero .intro{align-self:start}.side .hl{flex:1}}
+@media (max-width:900px){.hero{grid-template-columns:auto minmax(0,1fr);grid-template-areas:"photo side" "text text";align-items:stretch}.hero .look-wrap{align-self:stretch}.hero .look{flex:1;aspect-ratio:auto;min-height:240px}.hero .intro{align-self:start}.side .hl{flex:1}}
 .look{position:relative;display:block;width:150px;aspect-ratio:2/3;border-radius:18px;overflow:hidden;background:var(--surface);border:3px solid var(--accent);transition:border-color .3s;color:var(--fg);text-decoration:none;flex:none;max-width:100%}
 .look img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;display:block}
 .look-wrap{display:flex;flex-direction:column;align-items:stretch;gap:8px;width:150px}
@@ -143,7 +144,6 @@ window.va('beforeSend',function(ev){try{if(localStorage.getItem('va-soy-yo')){va
       <p id="tagline"></p>
     </div>
     <aside class="side" aria-live="polite">
-      <div class="card wxc" id="wxCard" hidden></div>
       <div class="card hl" id="hl"></div>
       <div class="card hl" id="hl2"></div>
     </aside>
@@ -489,15 +489,11 @@ fetch("https://armario-virtual-one.vercel.app/api/webhook?creador=1").then(r=>r.
     im.onload=()=>{
       const el=document.getElementById("lookImg");el.src=d.imagen;el.alt=T.lk.alt;
       const b=document.getElementById("lookBadge");b.textContent=d.es_de_hoy?T.lk.live:T.lk.dated(fdate(d.fecha_imagen));b.hidden=false;
-      const w=document.getElementById("lookWhy");w.textContent=d.es_de_hoy?T.lk.why:T.lk.why_old;w.hidden=false;
+      const w=document.getElementById("lookWhy"), t=d.tiempo;
+      const wx=(t&&typeof t.temp==="number"&&d.es_de_hoy)?` <span class="wxi" title="${esc(T.lk.wx[t.descripcion]||t.descripcion||"")}"><span aria-hidden="true">${esc(t.emoji||"")}</span>${t.temp}°</span>`:"";
+      w.innerHTML=esc(d.es_de_hoy?T.lk.why:T.lk.why_old)+wx;w.hidden=false;
     };
     im.src=d.imagen;
-  }
-  const t=d.tiempo;
-  if(t&&typeof t.temp==="number"){
-    const c=document.getElementById("wxCard"), desc=T.lk.wx[t.descripcion]||t.descripcion||"";
-    c.innerHTML=`<span class="big" aria-hidden="true">${esc(t.emoji||"")}</span><span class="t">${t.temp}°</span><span class="d">${esc(desc)}<br>${t.max}° / ${t.min}°</span>`;
-    c.hidden=false;
   }
 }).catch(()=>{});
 </script>
