@@ -28,6 +28,17 @@ body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-
 .hero{display:grid;grid-template-columns:auto minmax(0,1fr) 210px;grid-template-areas:"photo text side";gap:28px;align-items:center}
 .hero .look-wrap{grid-area:photo}.hero .intro{grid-area:text;min-width:0}.side{grid-area:side;display:flex;flex-direction:column;gap:12px;min-width:0}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+button.look{padding:0;font:inherit;cursor:default;-webkit-appearance:none;appearance:none;text-align:left}
+button.look.ready{cursor:zoom-in}
+button.look:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+#lookDlg{border:0;padding:0;border-radius:20px;background:var(--surface);color:var(--fg);width:min(420px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+#lookDlg::backdrop{background:rgba(10,12,18,.6);backdrop-filter:blur(3px)}
+#lookDlg img{display:block;width:100%;height:auto;aspect-ratio:2/3;object-fit:cover;background:var(--bg)}
+.dlg-cap{padding:14px 18px 18px;display:flex;flex-direction:column;gap:6px}
+.dlg-cap p{margin:0;font-size:14.5px}
+.dlg-wx{font:500 13px var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.dlg-x{position:absolute;top:10px;right:10px;width:40px;height:40px;border-radius:50%;border:0;background:color-mix(in srgb,var(--surface) 88%,transparent);color:var(--fg);font-size:24px;line-height:1;cursor:pointer;backdrop-filter:blur(6px)}
+.dlg-x:focus-visible{outline:3px solid var(--accent)}
 .ov{position:absolute;left:8px;right:8px;padding:5px 9px;border-radius:12px;background:color-mix(in srgb,var(--surface) 88%,transparent);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .ov-top{top:8px;right:auto;border-radius:999px}
 .wxi{white-space:nowrap;font:600 10.5px var(--mono);font-variant-numeric:tabular-nums;margin-left:2px}
@@ -132,11 +143,11 @@ window.va('beforeSend',function(ev){try{if(localStorage.getItem('va-soy-yo')){va
 <main class="wrap">
   <header class="hero">
     <div class="look-wrap">
-      <a class="look" id="look" href="https://armario-virtual-one.vercel.app" target="_blank" rel="noopener">
+      <button type="button" class="look" id="look" aria-haspopup="dialog">
         <img id="lookImg" src="avatar.jpg" alt="Diego Jiménez Peña" width="220" height="293">
         <span class="ov ov-top live" id="lookBadge" hidden></span>
         <span class="ov ov-bot" id="lookWhy" hidden></span>
-      </a>
+      </button>
     </div>
     <div class="intro">
       <div class="eyebrow" id="eyebrow"></div>
@@ -167,6 +178,15 @@ window.va('beforeSend',function(ev){try{if(localStorage.getItem('va-soy-yo')){va
   </section>
 
   <footer class="contact" id="contact"></footer>
+  <dialog id="lookDlg" aria-labelledby="dlgBadge">
+    <button type="button" class="dlg-x" id="dlgClose" aria-label="">&times;</button>
+    <img id="dlgImg" src="" alt="">
+    <div class="dlg-cap">
+      <span class="live" id="dlgBadge"></span>
+      <p id="dlgWhy"></p>
+      <p class="dlg-wx" id="dlgWx" hidden></p>
+    </div>
+  </dialog>
 </main>
 
 <script>
@@ -213,7 +233,7 @@ es:{
   apps_txt:{armario:["Armario virtual con IA","Organiza la ropa y propone conjuntos."],entrenos:["Planificador de entrenamientos","Rutinas, sesiones y seguimiento."],halte:["Comparador de halterofilia","Analiza y compara marcas y levantamientos."],candid:["Asistente de búsqueda de empleo","Encuentra ofertas y gestiona candidaturas de forma automática."],colordent:["Sistema para clínica dental","Herramienta de gestión para el sector salud."],kit:["Sistema de prospección comercial","Captación de clientes para centros de formación."],siar:["Panel de datos climáticos","Consulta y visualización de datos de radiación solar."]},
   priv:"Uso interno",
   wxl:{rain:"lluvia"},
-  lk:{live:"En directo",dated:f=>`Look del ${f}`,why:"Elegido por la IA de mi app",why_old:"Elegido por la IA de mi app",prendas:"prendas",looks:"looks creados",alt:"Diego con el look elegido hoy por su app",wx:{"despejado":"Despejado","parcialmente nublado":"Parcialmente nublado","nublado":"Nublado","niebla":"Niebla","llovizna":"Llovizna","lluvia":"Lluvia","nieve":"Nieve","chubascos":"Chubascos","tormenta":"Tormenta","variable":"Variable"}},
+  lk:{close:"Cerrar",live:"En directo",dated:f=>`Look del ${f}`,why:"Elegido por la IA de mi app",why_old:"Elegido por la IA de mi app",prendas:"prendas",looks:"looks creados",alt:"Diego con el look elegido hoy por su app",wx:{"despejado":"Despejado","parcialmente nublado":"Parcialmente nublado","nublado":"Nublado","niebla":"Niebla","llovizna":"Llovizna","lluvia":"Lluvia","nieve":"Nieve","chubascos":"Chubascos","tormenta":"Tormenta","variable":"Variable"}},
   st:{v:n=>n===1?"1 visita":`${fmt(n)} visitas`,sum:n=>`<strong>${fmt(n)}</strong> visitas a mis apps en los últimos 30 días.`,loc:"es-ES"},
   order:["traductor","profesor","programador"],
   P:{
@@ -276,7 +296,7 @@ fr:{
   apps_txt:{armario:["Garde-robe virtuelle avec IA","Organise les vêtements et propose des tenues."],entrenos:["Planificateur d'entraînement","Programmes, séances et suivi."],halte:["Comparateur d'haltérophilie","Analyse et compare les performances."],candid:["Assistant de recherche d'emploi","Trouve des offres et gère les candidatures automatiquement."],colordent:["Système pour cabinet dentaire","Outil de gestion pour le secteur de la santé."],kit:["Système de prospection commerciale","Acquisition de clients pour organismes de formation."],siar:["Tableau de données climatiques","Consultation et visualisation du rayonnement solaire."]},
   priv:"Usage interne",
   wxl:{rain:"pluie"},
-  lk:{live:"En direct",dated:f=>`Look du ${f}`,why:"Choisi par l'IA de mon app",why_old:"Choisi par l'IA de mon app",prendas:"vêtements",looks:"looks créés",alt:"Diego avec la tenue choisie aujourd'hui par son app",wx:{"despejado":"Ensoleillé","parcialmente nublado":"Partiellement nuageux","nublado":"Nuageux","niebla":"Brouillard","llovizna":"Bruine","lluvia":"Pluie","nieve":"Neige","chubascos":"Averses","tormenta":"Orage","variable":"Variable"}},
+  lk:{close:"Fermer",live:"En direct",dated:f=>`Look du ${f}`,why:"Choisi par l'IA de mon app",why_old:"Choisi par l'IA de mon app",prendas:"vêtements",looks:"looks créés",alt:"Diego avec la tenue choisie aujourd'hui par son app",wx:{"despejado":"Ensoleillé","parcialmente nublado":"Partiellement nuageux","nublado":"Nuageux","niebla":"Brouillard","llovizna":"Bruine","lluvia":"Pluie","nieve":"Neige","chubascos":"Averses","tormenta":"Orage","variable":"Variable"}},
   st:{v:n=>n===1?"1 visite":`${fmt(n)} visites`,sum:n=>`<strong>${fmt(n)}</strong> visites sur mes applications ces 30 derniers jours.`,loc:"fr-FR"},
   order:["profesor","traductor","coach","programador"],
   P:{
@@ -351,7 +371,7 @@ en:{
   apps_txt:{armario:["AI virtual wardrobe","Organises clothes and suggests outfits."],entrenos:["Training planner","Workouts, sessions and progress tracking."],halte:["Weightlifting comparator","Analyses and compares lifts and records."],candid:["Job Search Assistant","Finds openings and manages applications automatically."],colordent:["Dental clinic system","Management tool for the healthcare sector."],kit:["Sales prospecting system","Client acquisition for training providers."],siar:["Climate data dashboard","Solar radiation lookup and charts."]},
   priv:"Internal use",
   wxl:{rain:"rain"},
-  lk:{live:"Live",dated:f=>`Outfit from ${f}`,why:"Picked by my app's AI",why_old:"Picked by my app's AI",prendas:"items",looks:"outfits created",alt:"Diego wearing the outfit his app picked today",wx:{"despejado":"Clear","parcialmente nublado":"Partly cloudy","nublado":"Cloudy","niebla":"Fog","llovizna":"Drizzle","lluvia":"Rain","nieve":"Snow","chubascos":"Showers","tormenta":"Storm","variable":"Variable"}},
+  lk:{close:"Close",live:"Live",dated:f=>`Outfit from ${f}`,why:"Picked by my app's AI",why_old:"Picked by my app's AI",prendas:"items",looks:"outfits created",alt:"Diego wearing the outfit his app picked today",wx:{"despejado":"Clear","parcialmente nublado":"Partly cloudy","nublado":"Cloudy","niebla":"Fog","llovizna":"Drizzle","lluvia":"Rain","nieve":"Snow","chubascos":"Showers","tormenta":"Storm","variable":"Variable"}},
   st:{v:n=>n===1?"1 visit":`${fmt(n)} visits`,sum:n=>`<strong>${fmt(n)}</strong> visits to my apps in the last 30 days.`,loc:"en-GB"},
   order:["traductor","profesor","coach","programador"],
   P:{
@@ -492,6 +512,16 @@ fetch("https://armario-virtual-one.vercel.app/api/webhook?creador=1").then(r=>r.
       const w=document.getElementById("lookWhy"), t=d.tiempo;
       const wx=(t&&typeof t.temp==="number"&&d.es_de_hoy)?` <span class="wxi" title="${esc(T.lk.wx[t.descripcion]||t.descripcion||"")}"><span aria-hidden="true">${esc(t.emoji||"")}</span>${t.temp}°</span>`:"";
       w.innerHTML=esc(d.es_de_hoy?T.lk.why:T.lk.why_old)+wx;w.hidden=false;
+      /* Al tocar la foto: solo el look, en grande (sin enlace al armario) */
+      const dlg=document.getElementById("lookDlg"), btn=document.getElementById("look");
+      document.getElementById("dlgImg").src=d.imagen; document.getElementById("dlgImg").alt=T.lk.alt;
+      document.getElementById("dlgBadge").textContent=b.textContent;
+      document.getElementById("dlgWhy").textContent=d.es_de_hoy?T.lk.why:T.lk.why_old;
+      if(wx){const x=document.getElementById("dlgWx");x.textContent=`${t.emoji||""} ${t.temp}° · ${T.lk.wx[t.descripcion]||t.descripcion||""} · ${t.max}° / ${t.min}°`;x.hidden=false;}
+      const cl=document.getElementById("dlgClose"); cl.setAttribute("aria-label",T.lk.close); cl.onclick=()=>dlg.close();
+      dlg.addEventListener("click",e=>{if(e.target===dlg)dlg.close();});
+      btn.classList.add("ready"); btn.setAttribute("aria-label",T.lk.alt);
+      btn.onclick=()=>{try{dlg.showModal();}catch(e){dlg.setAttribute("open","");}};
     };
     im.src=d.imagen;
   }
