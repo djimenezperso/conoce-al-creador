@@ -44,13 +44,13 @@ body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-
 .appc .why{margin:8px 0 0;font-size:13.5px;line-height:1.4}
 .appc .nums{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:10px;padding-top:10px;border-top:1px solid var(--line);font:500 12px var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
 .appc .nums b{font-weight:700;color:var(--fg)}
-.look .badge{position:absolute;top:8px;left:8px;padding:4px 8px;border-radius:999px;background:color-mix(in srgb,var(--surface) 90%,transparent);backdrop-filter:blur(6px)}
+
 @media (prefers-reduced-motion:reduce){.live::before{animation:none}}
 .hl{border-color:var(--accent);transition:border-color .3s}
 .hl .n{font:700 38px/1 var(--display);color:var(--accent);transition:color .3s;font-variant-numeric:tabular-nums}
 .hl .l{margin-top:6px;font-weight:600;font-size:14.5px;line-height:1.3}
 .hl .s{margin-top:4px;font:500 11.5px var(--mono);letter-spacing:.04em;color:var(--muted)}
-@media (max-width:900px){.hero{grid-template-columns:auto minmax(0,1fr);grid-template-areas:"photo side" "text text";align-items:start}}
+@media (max-width:900px){.hero{grid-template-columns:auto minmax(0,1fr);grid-template-areas:"photo side" "text text";align-items:stretch}.hero .look-wrap{align-self:stretch}.hero .look{flex:1;aspect-ratio:auto;min-height:195px}.hero .intro{align-self:start}}
 .look{position:relative;display:block;width:150px;aspect-ratio:2/3;border-radius:18px;overflow:hidden;background:var(--surface);border:3px solid var(--accent);transition:border-color .3s;color:var(--fg);text-decoration:none;flex:none;max-width:100%}
 .look img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;display:block}
 .look-wrap{display:flex;flex-direction:column;align-items:flex-start;gap:8px;width:150px}
@@ -121,8 +121,8 @@ window.va('beforeSend',function(ev){try{if(localStorage.getItem('va-soy-yo')){va
     <div class="look-wrap">
       <a class="look" id="look" href="https://armario-virtual-one.vercel.app" target="_blank" rel="noopener">
         <img id="lookImg" src="avatar.jpg" alt="Diego Jiménez Peña" width="220" height="293">
-        <span class="badge live" id="lookBadge" hidden></span>
       </a>
+      <span class="live" id="lookBadge" hidden></span>
     </div>
     <div class="intro">
       <div class="eyebrow" id="eyebrow"></div>
