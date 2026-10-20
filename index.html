@@ -28,17 +28,8 @@ body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-
 .hero{display:grid;grid-template-columns:auto minmax(0,1fr) 210px;grid-template-areas:"photo text side";gap:28px;align-items:center}
 .hero .look-wrap{grid-area:photo}.hero .intro{grid-area:text;min-width:0}.side{grid-area:side;display:flex;flex-direction:column;gap:12px;min-width:0}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
-button.look{padding:0;font:inherit;cursor:default;-webkit-appearance:none;appearance:none;text-align:left}
-button.look.ready{cursor:zoom-in}
-button.look:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
-#lookDlg{border:0;padding:0;border-radius:20px;background:var(--surface);color:var(--fg);width:min(420px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto;box-shadow:0 20px 60px rgba(0,0,0,.35)}
-#lookDlg::backdrop{background:rgba(10,12,18,.6);backdrop-filter:blur(3px)}
-#lookDlg img{display:block;width:100%;height:auto;aspect-ratio:2/3;object-fit:cover;background:var(--bg)}
-.dlg-cap{padding:14px 18px 18px;display:flex;flex-direction:column;gap:6px}
-.dlg-cap p{margin:0;font-size:14.5px}
-.dlg-wx{font:500 13px var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
-.dlg-x{position:absolute;top:10px;right:10px;width:40px;height:40px;border-radius:50%;border:0;background:color-mix(in srgb,var(--surface) 88%,transparent);color:var(--fg);font-size:24px;line-height:1;cursor:pointer;backdrop-filter:blur(6px)}
-.dlg-x:focus-visible{outline:3px solid var(--accent)}
+.look:hover{border-color:var(--fg)}
+.look:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 .ov{position:absolute;left:8px;right:8px;padding:5px 9px;border-radius:12px;background:color-mix(in srgb,var(--surface) 88%,transparent);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .ov-top{top:8px;right:auto;border-radius:999px}
 .wxi{white-space:nowrap;font:600 10.5px var(--mono);font-variant-numeric:tabular-nums;margin-left:2px}
@@ -82,7 +73,7 @@ button.look:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 .wx .e{font-size:15px;line-height:1}
 .wx small{font-weight:500;color:var(--muted);font-size:11px}
 .look-cap{display:block;font:500 11.5px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.look:hover{border-color:var(--fg)}
+
 .hero h1{font-family:var(--display);font-weight:700;font-size:clamp(30px,5vw,52px);line-height:1.05;margin:6px 0 10px;text-wrap:balance}
 .hero p{margin:0;color:var(--muted);max-width:60ch}
 @media (max-width:560px){.hero{gap:20px 16px}.look,.look-wrap{width:130px}.wxc .t{font-size:24px}.hl .n{font-size:32px}}
@@ -143,11 +134,11 @@ window.va('beforeSend',function(ev){try{if(localStorage.getItem('va-soy-yo')){va
 <main class="wrap">
   <header class="hero">
     <div class="look-wrap">
-      <button type="button" class="look" id="look" aria-haspopup="dialog">
+      <a class="look" id="look" href="https://armario-virtual-one.vercel.app/?solo=hoy" target="_blank" rel="noopener">
         <img id="lookImg" src="avatar.jpg" alt="Diego Jiménez Peña" width="220" height="293">
         <span class="ov ov-top live" id="lookBadge" hidden></span>
         <span class="ov ov-bot" id="lookWhy" hidden></span>
-      </button>
+      </a>
     </div>
     <div class="intro">
       <div class="eyebrow" id="eyebrow"></div>
@@ -178,15 +169,6 @@ window.va('beforeSend',function(ev){try{if(localStorage.getItem('va-soy-yo')){va
   </section>
 
   <footer class="contact" id="contact"></footer>
-  <dialog id="lookDlg" aria-labelledby="dlgBadge">
-    <button type="button" class="dlg-x" id="dlgClose" aria-label="">&times;</button>
-    <img id="dlgImg" src="" alt="">
-    <div class="dlg-cap">
-      <span class="live" id="dlgBadge"></span>
-      <p id="dlgWhy"></p>
-      <p class="dlg-wx" id="dlgWx" hidden></p>
-    </div>
-  </dialog>
 </main>
 
 <script>
@@ -512,16 +494,6 @@ fetch("https://armario-virtual-one.vercel.app/api/webhook?creador=1").then(r=>r.
       const w=document.getElementById("lookWhy"), t=d.tiempo;
       const wx=(t&&typeof t.temp==="number"&&d.es_de_hoy)?` <span class="wxi" title="${esc(T.lk.wx[t.descripcion]||t.descripcion||"")}"><span aria-hidden="true">${esc(t.emoji||"")}</span>${t.temp}°</span>`:"";
       w.innerHTML=esc(d.es_de_hoy?T.lk.why:T.lk.why_old)+wx;w.hidden=false;
-      /* Al tocar la foto: solo el look, en grande (sin enlace al armario) */
-      const dlg=document.getElementById("lookDlg"), btn=document.getElementById("look");
-      document.getElementById("dlgImg").src=d.imagen; document.getElementById("dlgImg").alt=T.lk.alt;
-      document.getElementById("dlgBadge").textContent=b.textContent;
-      document.getElementById("dlgWhy").textContent=d.es_de_hoy?T.lk.why:T.lk.why_old;
-      if(wx){const x=document.getElementById("dlgWx");x.textContent=`${t.emoji||""} ${t.temp}° · ${T.lk.wx[t.descripcion]||t.descripcion||""} · ${t.max}° / ${t.min}°`;x.hidden=false;}
-      const cl=document.getElementById("dlgClose"); cl.setAttribute("aria-label",T.lk.close); cl.onclick=()=>dlg.close();
-      dlg.addEventListener("click",e=>{if(e.target===dlg)dlg.close();});
-      btn.classList.add("ready"); btn.setAttribute("aria-label",T.lk.alt);
-      btn.onclick=()=>{try{dlg.showModal();}catch(e){dlg.setAttribute("open","");}};
     };
     im.src=d.imagen;
   }
