@@ -25,7 +25,19 @@ img{max-width:100%}
 body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.55}
 .wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 64px;display:flex;flex-direction:column;gap:40px}
 .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.hero{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center}
+.hero{display:grid;grid-template-columns:auto minmax(0,1fr) 210px;grid-template-areas:"photo text side";gap:28px;align-items:center}
+.hero .look-wrap{grid-area:photo}.hero .intro{grid-area:text;min-width:0}.side{grid-area:side;display:flex;flex-direction:column;gap:12px;min-width:0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.wxc .top{display:flex;align-items:center;gap:10px}
+.wxc .big{font-size:34px;line-height:1}
+.wxc .t{font:700 28px var(--display);line-height:1;font-variant-numeric:tabular-nums}
+.wxc .d{margin-top:8px;font-weight:600;font-size:14.5px}
+.wxc .m{margin-top:2px;font:500 12px var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.hl{border-color:var(--accent);transition:border-color .3s}
+.hl .n{font:700 38px/1 var(--display);color:var(--accent);transition:color .3s;font-variant-numeric:tabular-nums}
+.hl .l{margin-top:6px;font-weight:600;font-size:14.5px;line-height:1.3}
+.hl .s{margin-top:4px;font:500 11.5px var(--mono);letter-spacing:.04em;color:var(--muted)}
+@media (max-width:900px){.hero{grid-template-columns:auto minmax(0,1fr);grid-template-areas:"photo side" "text text";align-items:start}}
 .look{position:relative;display:block;width:150px;aspect-ratio:2/3;border-radius:18px;overflow:hidden;background:var(--surface);border:3px solid var(--accent);transition:border-color .3s;color:var(--fg);text-decoration:none;flex:none;max-width:100%}
 .look img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;display:block}
 .look-wrap{display:flex;flex-direction:column;align-items:flex-start;gap:8px;width:150px}
@@ -36,7 +48,7 @@ body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-
 .look:hover{border-color:var(--fg)}
 .hero h1{font-family:var(--display);font-weight:700;font-size:clamp(30px,5vw,52px);line-height:1.05;margin:6px 0 10px;text-wrap:balance}
 .hero p{margin:0;color:var(--muted);max-width:60ch}
-@media (max-width:560px){.hero{grid-template-columns:1fr;justify-items:start}.look,.look-wrap{width:130px}}
+@media (max-width:560px){.hero{gap:20px 16px}.look,.look-wrap{width:130px}.wxc .t{font-size:24px}.hl .n{font-size:32px}}
 .tabs{display:flex;flex-wrap:wrap;gap:8px}
 .tab{font:600 15px var(--body);color:var(--fg);background:var(--surface);border:1.5px solid var(--line);border-radius:999px;padding:11px 18px;min-height:44px;cursor:pointer;display:flex;align-items:center;gap:9px;transition:border-color .2s}
 .tab .dot{width:10px;height:10px;border-radius:50%;background:var(--c)}
@@ -98,13 +110,16 @@ window.va('beforeSend',function(ev){try{if(localStorage.getItem('va-soy-yo')){va
         <img id="lookImg" src="avatar.jpg" alt="Diego Jiménez Peña" width="220" height="293">
       </a>
       <span class="look-cap" id="lookCap" hidden></span>
-      <span class="wx" id="wx" hidden></span>
     </div>
-    <div>
+    <div class="intro">
       <div class="eyebrow" id="eyebrow"></div>
       <h1>Diego Jiménez Peña</h1>
       <p id="tagline"></p>
     </div>
+    <aside class="side" aria-live="polite">
+      <div class="card wxc" id="wxCard" hidden></div>
+      <div class="card hl" id="hl"></div>
+    </aside>
   </header>
 
   <nav class="tabs" role="tablist" id="tabs"></nav>
@@ -170,11 +185,12 @@ es:{
   c:{email:"Email",phone:"Teléfono",city:"Ciudad",social:"Redes"}, city:"París, Francia",
   apps_txt:{armario:["Armario virtual con IA","Organiza la ropa y propone conjuntos."],entrenos:["Planificador de entrenamientos","Rutinas, sesiones y seguimiento."],halte:["Comparador de halterofilia","Analiza y compara marcas y levantamientos."],candid:["Asistente de búsqueda de empleo","Encuentra ofertas y gestiona candidaturas de forma automática."],colordent:["Sistema para clínica dental","Herramienta de gestión para el sector salud."],kit:["Sistema de prospección comercial","Captación de clientes para centros de formación."],siar:["Panel de datos climáticos","Consulta y visualización de datos de radiación solar."]},
   priv:"Uso interno",
+  wxl:{rain:"lluvia"},
   lk:{hoy:"Mi look de hoy",dia:f=>`Mi look del ${f}`,alt:"Diego con su look de hoy",wx:{"despejado":"Despejado","parcialmente nublado":"Parcialmente nublado","nublado":"Nublado","niebla":"Niebla","llovizna":"Llovizna","lluvia":"Lluvia","nieve":"Nieve","chubascos":"Chubascos","tormenta":"Tormenta","variable":"Variable"}},
   st:{v:n=>n===1?"1 visita":`${fmt(n)} visitas`,sum:n=>`<strong>${fmt(n)}</strong> visitas a mis apps en los últimos 30 días.`,loc:"es-ES"},
   order:["traductor","profesor","programador"],
   P:{
-    traductor:{label:"Traductor e intérprete",role:"Traducción e interpretación",email:"djimenezpenapro@gmail.com",
+    traductor:{hl:["4", "idiomas de trabajo", "ES · EN · FR · AR"],label:"Traductor e intérprete",role:"Traducción e interpretación",email:"djimenezpenapro@gmail.com",
       summary:"Traductor e intérprete de español, inglés, francés y árabe, con base en París. Soy una persona dinámica, positiva y paciente que se entrega a lo que hace.",
       exp:[["Intérprete","Christian Dior · París","Desde 11/2024"],
            ["Traductor e intérprete","SNCF Transilien, línea B · París","Desde 07/2024","Juegos Olímpicos y espectáculos."],
@@ -193,7 +209,7 @@ es:{
       skills:["Interpretación de conferencias","Interpretación en ámbito policial y aduanero","Traducción","Herramientas de IA","Microsoft Office","HTML y CSS"],
       langs:["Español · nativo","Inglés · nativo","Francés · C2","Árabe · A2"],
       apps:["candid"]},
-    profesor:{label:"Profesor de idiomas",role:"Enseñanza de idiomas",email:"djimenezpenapro@gmail.com",
+    profesor:{hl:["+10", "años enseñando inglés", "Desde 2016"],label:"Profesor de idiomas",role:"Enseñanza de idiomas",email:"djimenezpenapro@gmail.com",
       summary:"Profesor de inglés general y de negocios para empresas, escuelas y particulares. Soy una persona dinámica, positiva y paciente, dedicada plenamente a mi profesión.",
       exp:[["Profesor de inglés","Stephenson Formation · París","Desde 2023"],
            ["Profesor de inglés","EBM Business School · París","2022–2023"],
@@ -215,7 +231,7 @@ es:{
       skills:["Inglés general y de negocios","Expresión y comprensión oral y escrita","Gestión de proyectos Erasmus+","Geopolítica","Marketing","Recursos Humanos"],
       langs:["Español · nativo","Inglés · nativo","Francés · C2","Árabe · B1"],
       apps:["kit"]},
-    programador:{label:"Creador de apps",role:"Aplicaciones web",email:"djimenezpenapro@gmail.com",
+    programador:{hl:["{n}", "apps creadas", "Web · IA · Datos"],label:"Creador de apps",role:"Aplicaciones web",email:"djimenezpenapro@gmail.com",
       summary:"Diseño y publico aplicaciones web prácticas con ayuda de la inteligencia artificial, de la idea a la publicación: herramientas para el día a día, la formación y la búsqueda de clientes.",
       exp:[],edu:[],
       skills:["HTML y CSS","Python","Herramientas de IA","GitHub","Vercel","Diseño de interfaces","Adobe XD","Gimp"],
@@ -232,11 +248,12 @@ fr:{
   c:{email:"Email",phone:"Téléphone",city:"Ville",social:"Réseaux"}, city:"Paris, France",
   apps_txt:{armario:["Garde-robe virtuelle avec IA","Organise les vêtements et propose des tenues."],entrenos:["Planificateur d'entraînement","Programmes, séances et suivi."],halte:["Comparateur d'haltérophilie","Analyse et compare les performances."],candid:["Assistant de recherche d'emploi","Trouve des offres et gère les candidatures automatiquement."],colordent:["Système pour cabinet dentaire","Outil de gestion pour le secteur de la santé."],kit:["Système de prospection commerciale","Acquisition de clients pour organismes de formation."],siar:["Tableau de données climatiques","Consultation et visualisation du rayonnement solaire."]},
   priv:"Usage interne",
+  wxl:{rain:"pluie"},
   lk:{hoy:"Mon look du jour",dia:f=>`Mon look du ${f}`,alt:"Diego avec sa tenue du jour",wx:{"despejado":"Ensoleillé","parcialmente nublado":"Partiellement nuageux","nublado":"Nuageux","niebla":"Brouillard","llovizna":"Bruine","lluvia":"Pluie","nieve":"Neige","chubascos":"Averses","tormenta":"Orage","variable":"Variable"}},
   st:{v:n=>n===1?"1 visite":`${fmt(n)} visites`,sum:n=>`<strong>${fmt(n)}</strong> visites sur mes applications ces 30 derniers jours.`,loc:"fr-FR"},
   order:["profesor","traductor","coach","programador"],
   P:{
-    traductor:{label:"Traducteur-interprète",role:"Traduction et interprétation",email:"djimenezpenapro@gmail.com",
+    traductor:{hl:["4", "langues de travail", "ES · EN · FR · AR"],label:"Traducteur-interprète",role:"Traduction et interprétation",email:"djimenezpenapro@gmail.com",
       summary:"Traducteur et interprète espagnol, anglais, français et arabe, basé à Paris. Je suis une personne dynamique, positive et patiente, pleinement investie dans mon travail.",
       exp:[["Traducteur-interprète","Dior · Paris","Depuis 2025"],
            ["Traducteur-interprète","SNCF Transilien, ligne B · Paris","Depuis 2024","Jeux Olympiques et spectacles."],
@@ -255,7 +272,7 @@ fr:{
       skills:["Interprétation de conférence","Interprétation en milieu policier et douanier","Traduction","Outils d'IA","Microsoft Office","HTML et CSS"],
       langs:["Espagnol · natif","Anglais · natif","Français · C2","Arabe · A2"],
       apps:["candid"]},
-    profesor:{label:"Professeur de langues",role:"Enseignement des langues",email:"djimenezpenapro@gmail.com",
+    profesor:{hl:["+10", "ans à enseigner l'anglais", "Depuis 2016"],label:"Professeur de langues",role:"Enseignement des langues",email:"djimenezpenapro@gmail.com",
       summary:"Professeur d'anglais général et des affaires pour entreprises, écoles et particuliers. Je suis quelqu'un de dynamique, positif et patient, pleinement dévoué à mon métier.",
       exp:[["Professeur d'anglais","Stephenson Formation · Paris","Depuis 2023"],
            ["Professeur d'anglais","EBM Business School · Paris","2022–2023"],
@@ -277,7 +294,7 @@ fr:{
       skills:["Anglais général et des affaires","Production et compréhension orale et écrite","Gestion de projets Erasmus+","Géopolitique","Marketing","Ressources humaines"],
       langs:["Espagnol · natif","Anglais · natif","Français · C2","Arabe · B1"],
       apps:["kit"]},
-    coach:{label:"Coach sportif",role:"Coaching sportif",email:"djimenezpenapro@gmail.com",
+    coach:{hl:["+10", "ans de coaching", "Functional training · CrossFit"],label:"Coach sportif",role:"Coaching sportif",email:"djimenezpenapro@gmail.com",
       summary:"Coach sportif spécialisé en functional training et CrossFit, pour particuliers et entreprises, en présentiel et en ligne. Je suis une personne dynamique, positive et patiente qui se consacre à son métier.",
       exp:[["Coach sportif indépendant","Functional training · Paris","Depuis 2020","Séances personnalisées pour particuliers et entreprises, ateliers sportifs de teambuilding, et coaching en ligne avec programmes sur mesure, suivi à distance et ajustement des planifications."],
            ["Coach CrossFit","The Factory Box","2018","Cours collectifs, WOD adaptés à chaque niveau, correction technique en haltérophilie et gymnastique (snatch, clean & jerk, toes-to-bar) et suivi des performances."],
@@ -289,7 +306,7 @@ fr:{
       skills:["Programmation d'entraînement","Coaching individuel","Coaching en ligne","Teambuilding sportif","Animation de groupes","Gestion de clients","Adaptation aux publics","Création de contenus"],
       langs:["Français · C2","Espagnol · natif","Anglais · natif"],
       apps:["entrenos","halte"]},
-    programador:{label:"Créateur d'apps",role:"Applications web",email:"djimenezpenapro@gmail.com",
+    programador:{hl:["{n}", "applications créées", "Web · IA · Données"],label:"Créateur d'apps",role:"Applications web",email:"djimenezpenapro@gmail.com",
       summary:"Je conçois et publie des applications web pratiques avec l'aide de l'intelligence artificielle, de l'idée à la mise en ligne : outils du quotidien, sport, formation et prospection.",
       exp:[],edu:[],
       skills:["HTML et CSS","Python","Outils d'IA","GitHub","Vercel","Design d'interfaces","Adobe XD","Gimp"],
@@ -306,11 +323,12 @@ en:{
   c:{email:"Email",phone:"Phone",city:"City",social:"Social"}, city:"Paris, France",
   apps_txt:{armario:["AI virtual wardrobe","Organises clothes and suggests outfits."],entrenos:["Training planner","Workouts, sessions and progress tracking."],halte:["Weightlifting comparator","Analyses and compares lifts and records."],candid:["Job Search Assistant","Finds openings and manages applications automatically."],colordent:["Dental clinic system","Management tool for the healthcare sector."],kit:["Sales prospecting system","Client acquisition for training providers."],siar:["Climate data dashboard","Solar radiation lookup and charts."]},
   priv:"Internal use",
+  wxl:{rain:"rain"},
   lk:{hoy:"Today's outfit",dia:f=>`Outfit from ${f}`,alt:"Diego wearing today's outfit",wx:{"despejado":"Clear","parcialmente nublado":"Partly cloudy","nublado":"Cloudy","niebla":"Fog","llovizna":"Drizzle","lluvia":"Rain","nieve":"Snow","chubascos":"Showers","tormenta":"Storm","variable":"Variable"}},
   st:{v:n=>n===1?"1 visit":`${fmt(n)} visits`,sum:n=>`<strong>${fmt(n)}</strong> visits to my apps in the last 30 days.`,loc:"en-GB"},
   order:["traductor","profesor","coach","programador"],
   P:{
-    traductor:{label:"Translator & interpreter",role:"Translation and interpreting",email:"djimenezpenapro@gmail.com",
+    traductor:{hl:["4", "working languages", "ES · EN · FR · AR"],label:"Translator & interpreter",role:"Translation and interpreting",email:"djimenezpenapro@gmail.com",
       summary:"Spanish, English, French and Arabic translator and interpreter based in Paris. I am a dynamic person who is fully dedicated to my work.",
       exp:[["Translator & Interpreter","Dior · Paris","Since 2025"],
            ["Translator & Interpreter","SNCF Transilien, line B · Paris","Since 2024","Olympic Games and live events."],
@@ -329,7 +347,7 @@ en:{
       skills:["Conference interpreting","Police and customs interpreting","Translation","AI tools","Microsoft Office","HTML & CSS"],
       langs:["English · native","Spanish · native","French · C2","Arabic · A2"],
       apps:["candid"]},
-    profesor:{label:"Language teacher",role:"Language teaching",email:"djimenezpenapro@gmail.com",
+    profesor:{hl:["10+", "years teaching English", "Since 2016"],label:"Language teacher",role:"Language teaching",email:"djimenezpenapro@gmail.com",
       summary:"General and business English teacher for companies, schools and private students. I am dynamic, positive and patient, and fully dedicated to my profession.",
       exp:[["English Teacher","Stephenson Formation · Paris","Since 2023"],
            ["English Teacher","EBM Business School · Paris","2022–2023"],
@@ -351,7 +369,7 @@ en:{
       skills:["General and business English","Speaking, listening, reading and writing","Erasmus+ project management","Geopolitics","Marketing","Human resources"],
       langs:["English · native","Spanish · native","French · C2","Arabic · B1"],
       apps:["kit"]},
-    coach:{label:"Sports coach",role:"Sports coaching",email:"djimenezpenapro@gmail.com",
+    coach:{hl:["10+", "years of coaching", "Functional training · CrossFit"],label:"Sports coach",role:"Sports coaching",email:"djimenezpenapro@gmail.com",
       summary:"Sports coach specialising in functional training and CrossFit, for individuals and companies, in person and online. I am dynamic, positive and patient, and dedicated to my work.",
       exp:[["Independent Sports Coach","Functional training · Paris","Since 2020","Personalised sessions for individuals and companies, team-building workshops, and online coaching with tailored programmes, remote follow-up and plan adjustments."],
            ["CrossFit Coach","The Factory Box","2018","Group classes, scaled WODs, technical coaching in weightlifting and gymnastics (snatch, clean & jerk, toes-to-bar) and performance tracking."],
@@ -363,7 +381,7 @@ en:{
       skills:["Training programming","One-to-one coaching","Online coaching","Sports team building","Group classes","Client management","Adapting to every audience","Content creation"],
       langs:["French · C2","Spanish · native","English · native"],
       apps:["entrenos","halte"]},
-    programador:{label:"App builder",role:"Web apps",email:"djimenezpenapro@gmail.com",
+    programador:{hl:["{n}", "apps built", "Web · AI · Data"],label:"App builder",role:"Web apps",email:"djimenezpenapro@gmail.com",
       summary:"I design and publish practical web apps with the help of AI, from idea to launch: everyday tools, sport, training and sales prospecting.",
       exp:[],edu:[],
       skills:["HTML & CSS","Python","AI tools","GitHub","Vercel","Interface design","Adobe XD","Gimp"],
@@ -401,6 +419,7 @@ T.order.forEach(k=>{
 function show(k,user){
   const p=T.P[k]; if(!p) return;
   CUR=k;
+  if(p.hl){const [hn,hlab,hs]=p.hl;document.getElementById("hl").innerHTML=`<div class="n">${esc(hn.replace("{n}",p.apps.length))}</div><div class="l">${esc(hlab)}</div><div class="s">${esc(hs)}</div>`;}
   const sl=document.getElementById("appsStats"), tot=STATS&&STATS.totals?STATS.totals.pageviews:0;
   sl.hidden=!(tot>0); if(tot>0) sl.innerHTML=T.st.sum(tot);
   document.documentElement.style.setProperty("--accent",`var(${COLORS[k]})`);
@@ -447,10 +466,9 @@ fetch("https://armario-virtual-one.vercel.app/api/webhook?creador=1").then(r=>r.
   }
   const t=d.tiempo;
   if(t&&typeof t.temp==="number"){
-    const w=document.getElementById("wx"), desc=T.lk.wx[t.descripcion]||t.descripcion||"";
-    w.innerHTML=`<span class="e" aria-hidden="true">${esc(t.emoji||"")}</span><span>${t.temp}°</span><small>${t.max}°/${t.min}°</small>`;
-    w.title=`${desc} · ${t.max}° / ${t.min}°`; w.setAttribute("aria-label",w.title);
-    w.hidden=false;
+    const c=document.getElementById("wxCard"), desc=T.lk.wx[t.descripcion]||t.descripcion||"";
+    c.innerHTML=`<div class="top"><span class="big" aria-hidden="true">${esc(t.emoji||"")}</span><span class="t">${t.temp}°</span></div><div class="d">${esc(desc)}</div><div class="m">${t.max}° / ${t.min}°${typeof t.lluvia==="number"?` · ${T.wxl.rain} ${t.lluvia}%`:""}</div>`;
+    c.hidden=false;
   }
 }).catch(()=>{});
 </script>
