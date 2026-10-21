@@ -182,6 +182,7 @@ const ICON={
   target:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
   sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
   arrow:'<path d="M7 17 17 7M8 7h9v9"/>',
+  mic:'<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/>',
   chart:'<path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/>',
   lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>'
 };
@@ -189,15 +190,9 @@ const svg=k=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
 /* Apps personales: con enlace. Proyectos para clientes o de uso interno: sin enlace ni nombre. */
-const APP_URLS={
-  armario:["https://armario-virtual-one.vercel.app","shirt"],
-  entrenos:["https://entrenamientos-web-two.vercel.app","dumbbell"],
-  halte:["https://comparateur-halterophilie.vercel.app","chart"],
-  candid:[null,"send"],
-  colordent:[null,"tooth"],
-  kit:[null,"target"],
-  siar:[null,"sun"]
-};
+/* Apps: se leen de apps.json (lo actualiza la revisión diaria de Vercel, tras preguntar a Diego) */
+let APPS=[];
+const appsDe=k=>APPS.filter(a=>(a.perfiles||[]).includes(k)).map(a=>a.id);
 
 
 /* Cifras de uso: resumen público y anónimo de la app de estadísticas */
@@ -212,7 +207,6 @@ es:{
   profile:"Perfil", made:"Hecho por mí", apps:"Apps de este perfil", none:"Las apps de este perfil están en camino.",
   h:{exp:"Experiencia",edu:"Formación",skills:"Competencias",langs:"Idiomas"},
   c:{email:"Email",phone:"Teléfono",city:"Ciudad",social:"Redes"}, city:"París, Francia",
-  apps_txt:{armario:["Armario virtual con IA","Organiza la ropa y propone conjuntos."],entrenos:["Planificador de entrenamientos","Rutinas, sesiones y seguimiento."],halte:["Comparador de halterofilia","Analiza y compara marcas y levantamientos."],candid:["Asistente de búsqueda de empleo","Encuentra ofertas y gestiona candidaturas de forma automática."],colordent:["Sistema para clínica dental","Herramienta de gestión para el sector salud."],kit:["Sistema de prospección comercial","Captación de clientes para centros de formación."],siar:["Panel de datos climáticos","Consulta y visualización de datos de radiación solar."]},
   priv:"Uso interno",
   wxl:{rain:"lluvia"},
   lk:{close:"Cerrar",live:"En directo",dated:f=>`Look del ${f}`,why:"Elegido por la IA de mi app",why_old:"Elegido por la IA de mi app",prendas:"prendas",looks:"looks creados",alt:"Diego con el look elegido hoy por su app",wx:{"despejado":"Despejado","parcialmente nublado":"Parcialmente nublado","nublado":"Nublado","niebla":"Niebla","llovizna":"Llovizna","lluvia":"Lluvia","nieve":"Nieve","chubascos":"Chubascos","tormenta":"Tormenta","variable":"Variable"}},
@@ -236,8 +230,7 @@ es:{
            ["Traducción e Interpretación (árabe y francés)","Universidad de Granada","2016–2020"],
            ["C2 Cambridge English","Cambridge English · Granada","2016"]],
       skills:["Interpretación de conferencias","Interpretación en ámbito policial y aduanero","Traducción","Herramientas de IA","Microsoft Office","HTML y CSS"],
-      langs:["Español · nativo","Inglés · nativo","Francés · C2","Árabe · A2"],
-      apps:["candid"]},
+      langs:["Español · nativo","Inglés · nativo","Francés · C2","Árabe · A2"]},
     profesor:{hl2:["11", "centros donde he dado clase", "Escuelas, empresas y clubs"],hl:["+10", "años enseñando inglés", "Desde 2016"],label:"Profesor de idiomas",role:"Enseñanza de idiomas",email:"djimenezpenapro@gmail.com",
       summary:"Profesor de inglés general y de negocios para empresas, escuelas y particulares. Soy una persona dinámica, positiva y paciente, dedicada plenamente a mi profesión.",
       exp:[["Profesor de inglés","E2C92 · París","Desde 2025"],
@@ -258,14 +251,12 @@ es:{
            ["Traducción e Interpretación de Árabe","Universidad de Granada","2016–2020"],
            ["C2 Cambridge English","Cambridge English · Granada","2016"]],
       skills:["Inglés general y de negocios","Expresión y comprensión oral y escrita","Gestión de proyectos Erasmus+","Geopolítica","Marketing","Recursos Humanos"],
-      langs:["Español · nativo","Inglés · nativo","Francés · C2","Árabe · B1"],
-      apps:["kit"]},
+      langs:["Español · nativo","Inglés · nativo","Francés · C2","Árabe · B1"]},
     programador:{hl2:["IA", "en todas mis apps", "Diseño · código · publicación"],hl:["{n}", "apps creadas", "Web · IA · Datos"],label:"Creador de apps",role:"Aplicaciones web",email:"djimenezpenapro@gmail.com",
       summary:"Diseño y publico aplicaciones web prácticas con ayuda de la inteligencia artificial, de la idea a la publicación: herramientas para el día a día, la formación y la búsqueda de clientes.",
       exp:[],edu:[],
       skills:["HTML y CSS","Python","Herramientas de IA","GitHub","Vercel","Diseño de interfaces","Adobe XD","Gimp"],
-      langs:["Español · nativo","Inglés · nativo","Francés · C2"],
-      apps:["armario","entrenos","halte","candid","colordent","kit","siar"]}
+      langs:["Español · nativo","Inglés · nativo","Francés · C2"]}
   }
 },
 fr:{
@@ -275,7 +266,6 @@ fr:{
   profile:"Profil", made:"Fait par moi", apps:"Applications de ce profil", none:"Les applications de ce profil arrivent bientôt.",
   h:{exp:"Expérience",edu:"Formation",skills:"Compétences",langs:"Langues"},
   c:{email:"Email",phone:"Téléphone",city:"Ville",social:"Réseaux"}, city:"Paris, France",
-  apps_txt:{armario:["Garde-robe virtuelle avec IA","Organise les vêtements et propose des tenues."],entrenos:["Planificateur d'entraînement","Programmes, séances et suivi."],halte:["Comparateur d'haltérophilie","Analyse et compare les performances."],candid:["Assistant de recherche d'emploi","Trouve des offres et gère les candidatures automatiquement."],colordent:["Système pour cabinet dentaire","Outil de gestion pour le secteur de la santé."],kit:["Système de prospection commerciale","Acquisition de clients pour organismes de formation."],siar:["Tableau de données climatiques","Consultation et visualisation du rayonnement solaire."]},
   priv:"Usage interne",
   wxl:{rain:"pluie"},
   lk:{close:"Fermer",live:"En direct",dated:f=>`Look du ${f}`,why:"Choisi par l'IA de mon app",why_old:"Choisi par l'IA de mon app",prendas:"vêtements",looks:"looks créés",alt:"Diego avec la tenue choisie aujourd'hui par son app",wx:{"despejado":"Ensoleillé","parcialmente nublado":"Partiellement nuageux","nublado":"Nuageux","niebla":"Brouillard","llovizna":"Bruine","lluvia":"Pluie","nieve":"Neige","chubascos":"Averses","tormenta":"Orage","variable":"Variable"}},
@@ -299,8 +289,7 @@ fr:{
            ["Traduction et interprétation (arabe et français)","Université de Grenade","2016–2020"],
            ["C2 Cambridge English","Cambridge English · Grenade","2016"]],
       skills:["Interprétation de conférence","Interprétation en milieu policier et douanier","Traduction","Outils d'IA","Microsoft Office","HTML et CSS"],
-      langs:["Espagnol · natif","Anglais · natif","Français · C2","Arabe · A2"],
-      apps:["candid"]},
+      langs:["Espagnol · natif","Anglais · natif","Français · C2","Arabe · A2"]},
     profesor:{hl2:["11", "établissements où j'ai enseigné", "Écoles, entreprises et clubs"],hl:["+10", "ans à enseigner l'anglais", "Depuis 2016"],label:"Professeur de langues",role:"Enseignement des langues",email:"djimenezpenapro@gmail.com",
       summary:"Professeur d'anglais général et des affaires pour entreprises, écoles et particuliers. Je suis quelqu'un de dynamique, positif et patient, pleinement dévoué à mon métier.",
       exp:[["Professeur d'anglais","E2C92 · Paris","Depuis 2025"],
@@ -321,8 +310,7 @@ fr:{
            ["Traduction et interprétation d'arabe","Université de Grenade","2016–2020"],
            ["C2 Cambridge English","Cambridge English · Grenade","2016"]],
       skills:["Anglais général et des affaires","Production et compréhension orale et écrite","Gestion de projets Erasmus+","Géopolitique","Marketing","Ressources humaines"],
-      langs:["Espagnol · natif","Anglais · natif","Français · C2","Arabe · B1"],
-      apps:["kit"]},
+      langs:["Espagnol · natif","Anglais · natif","Français · C2","Arabe · B1"]},
     coach:{hl2:["3", "disciplines pratiquées à haut niveau", "Arts martiaux · rugby · CrossFit"],hl:["+10", "ans de coaching", "Functional training · CrossFit"],label:"Coach sportif",role:"Coaching sportif",email:"djimenezpenapro@gmail.com",
       summary:"Coach sportif spécialisé en functional training et CrossFit, pour particuliers et entreprises, en présentiel et en ligne. Je suis une personne dynamique, positive et patiente qui se consacre à son métier.",
       exp:[["Coach sportif indépendant","Functional training · Paris","Depuis 2020","Séances personnalisées pour particuliers et entreprises, ateliers sportifs de teambuilding, et coaching en ligne avec programmes sur mesure, suivi à distance et ajustement des planifications."],
@@ -333,14 +321,12 @@ fr:{
            ["Université de Grenade","Espagne",""],
            ["Sorbonne Nouvelle","Paris",""]],
       skills:["Programmation d'entraînement","Coaching individuel","Coaching en ligne","Teambuilding sportif","Animation de groupes","Gestion de clients","Adaptation aux publics","Création de contenus"],
-      langs:["Français · C2","Espagnol · natif","Anglais · natif"],
-      apps:["entrenos","halte"]},
+      langs:["Français · C2","Espagnol · natif","Anglais · natif"]},
     programador:{hl2:["IA", "dans toutes mes applications", "Design · code · mise en ligne"],hl:["{n}", "applications créées", "Web · IA · Données"],label:"Créateur d'apps",role:"Applications web",email:"djimenezpenapro@gmail.com",
       summary:"Je conçois et publie des applications web pratiques avec l'aide de l'intelligence artificielle, de l'idée à la mise en ligne : outils du quotidien, sport, formation et prospection.",
       exp:[],edu:[],
       skills:["HTML et CSS","Python","Outils d'IA","GitHub","Vercel","Design d'interfaces","Adobe XD","Gimp"],
-      langs:["Espagnol · natif","Anglais · natif","Français · C2"],
-      apps:["armario","entrenos","halte","candid","colordent","kit","siar"]}
+      langs:["Espagnol · natif","Anglais · natif","Français · C2"]}
   }
 },
 en:{
@@ -350,7 +336,6 @@ en:{
   profile:"Profile", made:"Made by me", apps:"Apps for this profile", none:"Apps for this profile are on the way.",
   h:{exp:"Experience",edu:"Education",skills:"Skills",langs:"Languages"},
   c:{email:"Email",phone:"Phone",city:"City",social:"Social"}, city:"Paris, France",
-  apps_txt:{armario:["AI virtual wardrobe","Organises clothes and suggests outfits."],entrenos:["Training planner","Workouts, sessions and progress tracking."],halte:["Weightlifting comparator","Analyses and compares lifts and records."],candid:["Job Search Assistant","Finds openings and manages applications automatically."],colordent:["Dental clinic system","Management tool for the healthcare sector."],kit:["Sales prospecting system","Client acquisition for training providers."],siar:["Climate data dashboard","Solar radiation lookup and charts."]},
   priv:"Internal use",
   wxl:{rain:"rain"},
   lk:{close:"Close",live:"Live",dated:f=>`Outfit from ${f}`,why:"Picked by my app's AI",why_old:"Picked by my app's AI",prendas:"items",looks:"outfits created",alt:"Diego wearing the outfit his app picked today",wx:{"despejado":"Clear","parcialmente nublado":"Partly cloudy","nublado":"Cloudy","niebla":"Fog","llovizna":"Drizzle","lluvia":"Rain","nieve":"Snow","chubascos":"Showers","tormenta":"Storm","variable":"Variable"}},
@@ -374,8 +359,7 @@ en:{
            ["Translation and Interpreting (Arabic & French)","University of Granada","2016–2020"],
            ["C2 Cambridge English","Cambridge English · Granada","2016"]],
       skills:["Conference interpreting","Police and customs interpreting","Translation","AI tools","Microsoft Office","HTML & CSS"],
-      langs:["English · native","Spanish · native","French · C2","Arabic · A2"],
-      apps:["candid"]},
+      langs:["English · native","Spanish · native","French · C2","Arabic · A2"]},
     profesor:{hl2:["11", "schools and companies I've taught at", "Schools, businesses and clubs"],hl:["10+", "years teaching English", "Since 2016"],label:"Language teacher",role:"Language teaching",email:"djimenezpenapro@gmail.com",
       summary:"General and business English teacher for companies, schools and private students. I am dynamic, positive and patient, and fully dedicated to my profession.",
       exp:[["English Teacher","E2C92 · Paris","Since 2025"],
@@ -396,8 +380,7 @@ en:{
            ["Translation and Interpreting (Arabic)","University of Granada","2016–2020"],
            ["C2 Cambridge English","Cambridge English · Granada","2016"]],
       skills:["General and business English","Speaking, listening, reading and writing","Erasmus+ project management","Geopolitics","Marketing","Human resources"],
-      langs:["English · native","Spanish · native","French · C2","Arabic · B1"],
-      apps:["kit"]},
+      langs:["English · native","Spanish · native","French · C2","Arabic · B1"]},
     coach:{hl2:["3", "sports practised at a high level", "Martial arts · rugby · CrossFit"],hl:["10+", "years of coaching", "Functional training · CrossFit"],label:"Sports coach",role:"Sports coaching",email:"djimenezpenapro@gmail.com",
       summary:"Sports coach specialising in functional training and CrossFit, for individuals and companies, in person and online. I am dynamic, positive and patient, and dedicated to my work.",
       exp:[["Independent Sports Coach","Functional training · Paris","Since 2020","Personalised sessions for individuals and companies, team-building workshops, and online coaching with tailored programmes, remote follow-up and plan adjustments."],
@@ -408,14 +391,12 @@ en:{
            ["University of Granada","Spain",""],
            ["Sorbonne Nouvelle","Paris",""]],
       skills:["Training programming","One-to-one coaching","Online coaching","Sports team building","Group classes","Client management","Adapting to every audience","Content creation"],
-      langs:["French · C2","Spanish · native","English · native"],
-      apps:["entrenos","halte"]},
+      langs:["French · C2","Spanish · native","English · native"]},
     programador:{hl2:["AI", "in every app I build", "Design · code · launch"],hl:["{n}", "apps built", "Web · AI · Data"],label:"App builder",role:"Web apps",email:"djimenezpenapro@gmail.com",
       summary:"I design and publish practical web apps with the help of AI, from idea to launch: everyday tools, sport, training and sales prospecting.",
       exp:[],edu:[],
       skills:["HTML & CSS","Python","AI tools","GitHub","Vercel","Interface design","Adobe XD","Gimp"],
-      langs:["English · native","Spanish · native","French · C2"],
-      apps:["armario","entrenos","halte","candid","colordent","kit","siar"]}
+      langs:["English · native","Spanish · native","French · C2"]}
   }
 }};
 const COLORS={traductor:"--a-traductor",profesor:"--a-profesor",programador:"--a-programador",coach:"--a-coach"};
@@ -447,8 +428,9 @@ T.order.forEach(k=>{
 
 function show(k,user){
   const p=T.P[k]; if(!p) return;
+  const papps=appsDe(k);
   CUR=k;
-  if(p.hl){const [hn,hlab,hs]=p.hl;document.getElementById("hl").innerHTML=`<div class="n">${esc(hn.replace("{n}",p.apps.length))}</div><div class="l">${esc(hlab)}</div><div class="s">${esc(hs)}</div>`;}
+  if(p.hl){const [hn,hlab,hs]=p.hl;document.getElementById("hl").innerHTML=`<div class="n">${esc(hn.replace("{n}",papps.length||"…"))}</div><div class="l">${esc(hlab)}</div><div class="s">${esc(hs)}</div>`;}
   {const el=document.getElementById("hl2");if(p.hl2){const [n2,l2,s2]=p.hl2;el.innerHTML=`<div class="n">${esc(n2)}</div><div class="l">${esc(l2)}</div><div class="s">${esc(s2)}</div>`;el.hidden=false;}else el.hidden=true;}
   const sl=document.getElementById("appsStats"), tot=STATS&&STATS.totals?STATS.totals.pageviews:0;
   sl.hidden=!(tot>0); if(tot>0) sl.innerHTML=T.st.sum(tot);
@@ -465,8 +447,8 @@ function show(k,user){
   html+=`<div class="block"><h3>${T.h.skills}</h3>${chips(p.skills)}</div>`;
   html+=`<div class="block"><h3>${T.h.langs}</h3>${chips(p.langs)}</div>`;
   document.getElementById("cv").innerHTML=html;
-  document.getElementById("apps").innerHTML=p.apps.length?p.apps.map(id=>{
-    const [u,i]=APP_URLS[id],[n,d]=T.apps_txt[id];
+  document.getElementById("apps").innerHTML=papps.length?papps.map(id=>{
+    const ap=APPS.find(x=>x.id===id), u=ap.url, i=ICON[ap.icono]?ap.icono:"chart", [n,d]=ap[lang]||ap.es;
     const pv=STATS&&STATS.apps&&STATS.apps[id]?STATS.apps[id].pageviews:0;
     const inner=`<span class="ic">${svg(i)}</span><span><b>${esc(n)}</b>${d?`<small>${esc(d)}</small>`:""}${pv>0?`<span class="uses">${T.st.v(pv)} · 30 d</span>`:""}</span>`;
     return u?`<a class="app" href="${u}" target="_blank" rel="noopener">${inner}<span class="go">${svg("arrow")}</span></a>`
@@ -480,6 +462,7 @@ function show(k,user){
 const h=location.hash.slice(1);
 show(T.P[h]?h:T.order[0],false);
 window.addEventListener("hashchange",()=>{const x=location.hash.slice(1); if(T.P[x]) show(x,false);});
+fetch("apps.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).then(d=>{ if(d&&Array.isArray(d.apps)){APPS=d.apps; show(CUR,false);} }).catch(()=>{});
 fetch(STATS_URL).then(r=>r.ok?r.json():null).then(d=>{ if(d&&d.ok){STATS=d; show(CUR,false);} }).catch(()=>{});
 
 /* Foto de arriba: look elegido hoy por mi app Armario Virtual; el tiempo de hoy, a la derecha */
