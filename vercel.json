@@ -1,5 +1,23 @@
 {
   "rewrites": [
-    { "source": "/c/:token", "destination": "/index.html" }
+    {
+      "source": "/c/:token",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/privado/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow, noarchive"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        }
+      ]
+    }
   ]
 }
