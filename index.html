@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Diego Jiménez Peña</title>
 <meta name="description" content="Diego Jiménez Peña · CV">
-<link rel="icon" href="avatar.jpg">
+<link rel="icon" href="/avatar.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
 <style>
@@ -135,7 +135,7 @@ window.va('beforeSend',function(ev){try{if(localStorage.getItem('va-soy-yo')){va
   <header class="hero">
     <div class="look-wrap">
       <a class="look" id="look" href="https://armario-virtual-one.vercel.app/?solo=hoy" target="_blank" rel="noopener">
-        <img id="lookImg" src="avatar.jpg" alt="Diego Jiménez Peña" width="220" height="293">
+        <img id="lookImg" src="/avatar.jpg" alt="Diego Jiménez Peña" width="220" height="293">
         <span class="ov ov-top live" id="lookBadge" hidden></span>
         <span class="ov ov-bot" id="lookWhy" hidden></span>
       </a>
@@ -462,7 +462,7 @@ function show(k,user){
 const h=location.hash.slice(1);
 show(T.P[h]?h:T.order[0],false);
 window.addEventListener("hashchange",()=>{const x=location.hash.slice(1); if(T.P[x]) show(x,false);});
-fetch("apps.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).then(d=>{ if(d&&Array.isArray(d.apps)){APPS=d.apps; show(CUR,false);} }).catch(()=>{});
+fetch("/apps.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).then(d=>{ if(d&&Array.isArray(d.apps)){APPS=d.apps; show(CUR,false);} }).catch(()=>{});
 fetch(STATS_URL).then(r=>r.ok?r.json():null).then(d=>{ if(d&&d.ok){STATS=d; show(CUR,false);} }).catch(()=>{});
 
 /* Foto de arriba: look elegido hoy por mi app Armario Virtual; el tiempo de hoy, a la derecha */
