@@ -183,6 +183,54 @@
       },
       "recomendado": "publico",
       "nota": "Es tu propio producto: no tiene datos de clientes, solo un CV de ejemplo inventado."
+    },
+    {
+      "proyecto": "sir-driver-garage",
+      "url": "https://sir-driver-garage.vercel.app",
+      "propuesta": {
+        "icono": "target",
+        "perfiles": [
+          "programador"
+        ],
+        "es": [
+          "Personalizador de coches con IA",
+          "Prueba pintura, llantas y piezas sobre fotos reales y genera la lista de compra."
+        ],
+        "fr": [
+          "Personnalisateur de voitures avec IA",
+          "Teste peinture, jantes et pièces sur de vraies photos et génère la liste d'achats."
+        ],
+        "en": [
+          "AI car customiser",
+          "Try paint, wheels and parts on real photos and get a shopping list."
+        ]
+      },
+      "recomendado": "publico",
+      "nota": "Es tu propio producto: usa fotos públicas de coches de serie y no guarda datos de clientes. Ningún icono encaja del todo; propongo 'target' (se puede añadir uno de coche)."
+    },
+    {
+      "proyecto": "mi-maleta",
+      "url": "https://mi-maleta-app.vercel.app",
+      "propuesta": {
+        "icono": "sun",
+        "perfiles": [
+          "programador"
+        ],
+        "es": [
+          "Checklist de maleta",
+          "Lista de equipaje que se adapta al viaje y al alojamiento."
+        ],
+        "fr": [
+          "Checklist de valise",
+          "Liste de bagages qui s'adapte au voyage et au logement."
+        ],
+        "en": [
+          "Packing checklist",
+          "Packing list that adapts to the trip and the accommodation."
+        ]
+      },
+      "recomendado": "publico",
+      "nota": "App personal sin datos de clientes: todo se guarda solo en el móvil de quien la usa. Ningún icono encaja del todo; propongo 'sun' (viaje)."
     }
   ]
 }
