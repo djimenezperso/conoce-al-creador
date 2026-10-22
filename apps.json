@@ -256,6 +256,30 @@
       },
       "recomendado": "interno",
       "nota": "Sistema de reservas para un estudio: la página no muestra nombres ni contactos, pero guarda reservas de personas reales y puede ser de un cliente. Si es una demo tuya sin datos reales, se puede hacer pública. Ningún icono encaja del todo; propongo 'dumbbell' (actividad física)."
+    },
+    {
+      "proyecto": "devis-eclair",
+      "url": "https://devis-eclair-two.vercel.app",
+      "propuesta": {
+        "icono": "target",
+        "perfiles": [
+          "programador"
+        ],
+        "es": [
+          "Presupuesto exprés con IA",
+          "Analiza la descripción y la foto de una avería doméstica y da una horquilla de precio orientativa."
+        ],
+        "fr": [
+          "Devis express avec IA",
+          "Analyse la description et la photo d'une panne à la maison et donne une fourchette de prix indicative."
+        ],
+        "en": [
+          "AI express quote",
+          "Reads the description and photo of a home repair issue and gives an indicative price range."
+        ]
+      },
+      "recomendado": "publico",
+      "nota": "Prototipo propio de demostración: precios orientativos, sin pagos reales ni datos de clientes. Ojo: ahora tiene la protección de Vercel activada, así que el enlace pide inicio de sesión; si lo publicas, hay que quitarla. Ningún icono encaja del todo; propongo 'target'."
     }
   ]
 }
