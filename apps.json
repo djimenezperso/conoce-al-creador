@@ -231,6 +231,31 @@
       },
       "recomendado": "publico",
       "nota": "App personal sin datos de clientes: todo se guarda solo en el móvil de quien la usa. Ningún icono encaja del todo; propongo 'sun' (viaje)."
+    },
+    {
+      "proyecto": "huecos-yoga",
+      "url": "https://huecos-yoga.vercel.app",
+      "propuesta": {
+        "icono": "dumbbell",
+        "perfiles": [
+          "programador",
+          "coach"
+        ],
+        "es": [
+          "Reservas de clases de yoga",
+          "Muestra las plazas libres de cada clase y permite reservar sitio en un momento."
+        ],
+        "fr": [
+          "Réservation de cours de yoga",
+          "Affiche les places libres de chaque cours et permet de réserver en un instant."
+        ],
+        "en": [
+          "Yoga class booking",
+          "Shows free spots in each class and lets people book in seconds."
+        ]
+      },
+      "recomendado": "interno",
+      "nota": "Sistema de reservas para un estudio: la página no muestra nombres ni contactos, pero guarda reservas de personas reales y puede ser de un cliente. Si es una demo tuya sin datos reales, se puede hacer pública. Ningún icono encaja del todo; propongo 'dumbbell' (actividad física)."
     }
   ]
 }
