@@ -466,8 +466,18 @@ fetch("/apps.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).then(d=>{ if(
 fetch(STATS_URL).then(r=>r.ok?r.json():null).then(d=>{ if(d&&d.ok){STATS=d; show(CUR,false);} }).catch(()=>{});
 
 /* Foto de arriba: look elegido hoy por mi app Armario Virtual; el tiempo de hoy, a la derecha */
-fetch("https://armario-virtual-one.vercel.app/api/webhook?creador=1").then(r=>r.ok?r.json():null).then(d=>{
-  if(!d||!d.ok) return;
+/* Look fijo (looks.json): «normal» o, si hoy llueve, «lluvia». El tiempo sigue saliendo de Armario Virtual. */
+Promise.all([
+  fetch("/looks.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).catch(()=>null),
+  fetch("https://armario-virtual-one.vercel.app/api/webhook?creador=1").then(r=>r.ok?r.json():null).catch(()=>null)
+]).then(([L,d])=>{
+  d=(d&&d.ok)?d:(L?{ok:true,tiempo:null}:null);
+  if(!d) return;
+  if(L){
+    const t=d.tiempo, llueve=!!t&&((t.lluvia||0)>=50||["lluvia","llovizna","chubascos","tormenta","nieve"].includes(t.descripcion));
+    const elegido=(llueve&&L.lluvia)||L.normal;
+    if(elegido&&elegido.imagen){d.imagen=elegido.imagen; d.es_de_hoy=true; d.fecha_imagen=d.fecha;}
+  }
   const fdate=f=>{try{return new Date(f+"T12:00:00").toLocaleDateString(T.st.loc,{day:"numeric",month:"short"});}catch(e){return f;}};
   if(d.imagen){
     const im=new Image();

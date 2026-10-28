@@ -1,0 +1,5 @@
+{
+  "_ayuda": "Looks fijos de la foto de arriba (ya generados en Armario Virtual, no gastan créditos). Si hoy llueve se usa 'lluvia'; si no, 'normal'.",
+  "normal": {"id": "8bce5553", "nombre": "Capa de Estilo", "imagen": "https://armario-virtual-one.vercel.app/api/webhook?bimg=imgs/combo_33e40a632130c21f23caf231.jpg&p=yo&s=397fef25012d0d5ed2fecc24b460168f"},
+  "lluvia": {"id": "65fc8c82", "nombre": "Lluvia Elegante Casual", "imagen": "https://armario-virtual-one.vercel.app/api/webhook?bimg=imgs/combo_9735502709b9ffb04c38326f.jpg&p=yo&s=9dce7edd07e028ea19d5a10be48ec24f"}
+}
