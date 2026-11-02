@@ -280,6 +280,79 @@
       },
       "recomendado": "publico",
       "nota": "Prototipo propio de demostración: precios orientativos, sin pagos reales ni datos de clientes. Ojo: ahora tiene la protección de Vercel activada, así que el enlace pide inicio de sesión; si lo publicas, hay que quitarla. Ningún icono encaja del todo; propongo 'target'."
+    },
+    {
+      "proyecto": "firma-docs",
+      "url": "https://firma-docs-rouge.vercel.app",
+      "propuesta": {
+        "icono": "send",
+        "perfiles": [
+          "programador"
+        ],
+        "es": [
+          "Firma electrónica de documentos",
+          "Permite leer, completar y firmar un documento desde el móvil y descargar el PDF firmado."
+        ],
+        "fr": [
+          "Signature électronique de documents",
+          "Permet de lire, compléter et signer un document depuis le mobile et de télécharger le PDF signé."
+        ],
+        "en": [
+          "Electronic document signing",
+          "Lets people read, fill in and sign a document on their phone and download the signed PDF."
+        ]
+      },
+      "recomendado": "interno",
+      "nota": "Sirve para firmar tus propios documentos con clientes: guarda firmas, nombres e IP de personas reales, así que mejor sin enlace. Ningún icono encaja del todo; propongo 'send'."
+    },
+    {
+      "proyecto": "demo-tobias",
+      "url": "https://demo-tobias.vercel.app",
+      "propuesta": {
+        "icono": "chart",
+        "perfiles": [
+          "programador",
+          "coach"
+        ],
+        "es": [
+          "Demo de herramientas comerciales",
+          "Demo de llamadas, correos y estadísticas para captar clientes, con datos ficticios."
+        ],
+        "fr": [
+          "Démo d'outils commerciaux",
+          "Démo d'appels, d'e-mails et de statistiques pour trouver des clients, avec des données fictives."
+        ],
+        "en": [
+          "Sales tools demo",
+          "Demo of calls, emails and stats to find clients, using fictional data."
+        ]
+      },
+      "recomendado": "oculto",
+      "nota": "Es una demo preparada para un cliente potencial concreto (su nombre aparece en la página), así que mejor no mostrarla. Además repite lo que ya enseña el kit de prospección."
+    },
+    {
+      "proyecto": "captacion-llamadas",
+      "url": "https://captacion-llamadas.vercel.app",
+      "propuesta": {
+        "icono": "mic",
+        "perfiles": [
+          "programador"
+        ],
+        "es": [
+          "Captación por llamadas con IA",
+          "Busca empresas, prepara el guion de llamada con IA y registra resultados y estadísticas."
+        ],
+        "fr": [
+          "Prospection téléphonique avec IA",
+          "Cherche des entreprises, prépare le script d'appel avec l'IA et suit résultats et statistiques."
+        ],
+        "en": [
+          "AI call prospecting",
+          "Finds companies, prepares the call script with AI and tracks results and stats."
+        ]
+      },
+      "recomendado": "interno",
+      "nota": "Herramienta de trabajo para tus llamadas: guarda empresas y contactos reales y está protegida con inicio de sesión, así que mejor sin enlace."
     }
   ]
 }
