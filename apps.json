@@ -353,6 +353,79 @@
       },
       "recomendado": "interno",
       "nota": "Herramienta de trabajo para tus llamadas: guarda empresas y contactos reales y está protegida con inicio de sesión, así que mejor sin enlace."
+    },
+    {
+      "proyecto": "signo-firma",
+      "url": "https://signo-firma.vercel.app",
+      "propuesta": {
+        "icono": "send",
+        "perfiles": [
+          "programador"
+        ],
+        "es": [
+          "Firma de documentos online",
+          "Sube un PDF, comparte el enlace y recíbelo firmado desde cualquier móvil, sin cuenta."
+        ],
+        "fr": [
+          "Signature de documents en ligne",
+          "Importe un PDF, partage le lien et récupère-le signé depuis n'importe quel mobile, sans compte."
+        ],
+        "en": [
+          "Online document signing",
+          "Upload a PDF, share the link and get it back signed from any phone, no account needed."
+        ]
+      },
+      "recomendado": "publico",
+      "nota": "Es tu propio producto abierto a cualquiera (la página lleva tu nombre) y no muestra datos de nadie. Ojo: los documentos que suban otras personas se guardan en el servidor; la página solo enseña el formulario. Ningún icono encaja del todo; propongo 'send'."
+    },
+    {
+      "proyecto": "emargement-e2c93",
+      "url": "https://emargement-e2c93.vercel.app",
+      "propuesta": {
+        "icono": "send",
+        "perfiles": [
+          "profesor",
+          "programador"
+        ],
+        "es": [
+          "Hojas de asistencia con firma",
+          "Genera hojas de asistencia semanales, las firma el responsable desde el móvil y prepara la factura del mes con los PDF."
+        ],
+        "fr": [
+          "Feuilles d'émargement signées",
+          "Génère des feuilles d'émargement hebdomadaires, signées par le responsable sur mobile, et prépare la facture du mois avec les PDF."
+        ],
+        "en": [
+          "Signed attendance sheets",
+          "Creates weekly attendance sheets, signed by the manager on a phone, and prepares the monthly invoice with the PDFs."
+        ]
+      },
+      "recomendado": "oculto",
+      "nota": "Está hecha para un cliente concreto: su nombre aparece en el proyecto y en la página, y guarda firmas, nombres y facturas reales. Además tiene la protección de Vercel activada. Mejor no mostrarla (o como mucho 'interno')."
+    },
+    {
+      "proyecto": "correo-diego",
+      "url": "https://correo-diego.vercel.app",
+      "propuesta": {
+        "icono": "send",
+        "perfiles": [
+          "programador"
+        ],
+        "es": [
+          "Herramienta de correo",
+          "Herramienta personal para gestionar correos."
+        ],
+        "fr": [
+          "Outil de messagerie",
+          "Outil personnel pour gérer les e-mails."
+        ],
+        "en": [
+          "Email tool",
+          "Personal tool to manage emails."
+        ]
+      },
+      "recomendado": "oculto",
+      "nota": "No he podido ver qué hace: está protegida con inicio de sesión de Vercel. Por el nombre parece una herramienta personal de tu correo, que puede tener datos privados, así que mejor ocultarla. Los textos son provisionales."
     }
   ]
 }
