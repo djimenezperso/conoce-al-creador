@@ -426,6 +426,54 @@
       },
       "recomendado": "oculto",
       "nota": "No he podido ver qué hace: está protegida con inicio de sesión de Vercel. Por el nombre parece una herramienta personal de tu correo, que puede tener datos privados, así que mejor ocultarla. Los textos son provisionales."
+    },
+    {
+      "proyecto": "collecte-documents",
+      "url": "https://collecte-documents.vercel.app",
+      "propuesta": {
+        "icono": "send",
+        "perfiles": [
+          "programador"
+        ],
+        "es": [
+          "Recogida de documentos de clientes",
+          "Cada cliente sube sus documentos desde el móvil; la herramienta detecta lo que falta, avisa sola y lo archiva todo."
+        ],
+        "fr": [
+          "Collecte de documents clients",
+          "Chaque client dépose ses pièces depuis son mobile ; l'outil repère ce qui manque, relance tout seul et classe tout."
+        ],
+        "en": [
+          "Client document collection",
+          "Each client uploads documents from their phone; the tool spots what's missing, sends reminders and files everything."
+        ]
+      },
+      "recomendado": "publico",
+      "nota": "Demo propia para despachos contables con datos ficticios: no guarda nada (los archivos se quedan en el navegador). Ojo: tiene la protección de Vercel activada, así que el enlace pide inicio de sesión; si la publicas, hay que quitarla. Ningún icono encaja del todo; propongo 'send'."
+    },
+    {
+      "proyecto": "rappels-automatiques",
+      "url": "https://rappels-automatiques.vercel.app",
+      "propuesta": {
+        "icono": "send",
+        "perfiles": [
+          "programador"
+        ],
+        "es": [
+          "Recordatorios automáticos de citas",
+          "Envía un SMS la víspera para confirmar o anular y ofrece el hueco libre a la lista de espera."
+        ],
+        "fr": [
+          "Rappels automatiques de rendez-vous",
+          "Envoie un SMS la veille pour confirmer ou annuler et propose le créneau libéré à la liste d'attente."
+        ],
+        "en": [
+          "Automatic appointment reminders",
+          "Sends a text the day before to confirm or cancel and offers freed slots to the waiting list."
+        ]
+      },
+      "recomendado": "publico",
+      "nota": "Demo propia con datos ficticios: no envía SMS reales ni guarda datos de nadie. Ojo: tiene la protección de Vercel activada, así que el enlace pide inicio de sesión; si la publicas, hay que quitarla. Ningún icono encaja del todo; propongo 'send'."
     }
   ]
 }
