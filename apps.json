@@ -474,6 +474,30 @@
       },
       "recomendado": "publico",
       "nota": "Demo propia con datos ficticios: no envía SMS reales ni guarda datos de nadie. Ojo: tiene la protección de Vercel activada, así que el enlace pide inicio de sesión; si la publicas, hay que quitarla. Ningún icono encaja del todo; propongo 'send'."
+    },
+    {
+      "proyecto": "factures-auto",
+      "url": "https://factures-auto.vercel.app",
+      "propuesta": {
+        "icono": "chart",
+        "perfiles": [
+          "programador"
+        ],
+        "es": [
+          "Facturas automáticas con IA",
+          "Haz una foto a una factura: la IA lee importes e IVA, la clasifica y prepara el export para el contable."
+        ],
+        "fr": [
+          "Factures automatiques avec IA",
+          "Prends en photo une facture : l'IA lit les montants et la TVA, la classe et prépare l'export pour le comptable."
+        ],
+        "en": [
+          "AI automatic invoices",
+          "Snap a photo of an invoice: AI reads amounts and VAT, categorises it and prepares the export for the accountant."
+        ]
+      },
+      "recomendado": "publico",
+      "nota": "Demo propia con ejemplos ficticios: no guarda nada en el servidor (los datos se quedan en el navegador). Ojo: tiene la protección de Vercel activada, así que el enlace pide inicio de sesión; si la publicas, hay que quitarla."
     }
   ]
 }
