@@ -498,6 +498,78 @@
       },
       "recomendado": "publico",
       "nota": "Demo propia con ejemplos ficticios: no guarda nada en el servidor (los datos se quedan en el navegador). Ojo: tiene la protección de Vercel activada, así que el enlace pide inicio de sesión; si la publicas, hay que quitarla."
+    },
+    {
+      "proyecto": "mes-candidatures",
+      "url": "https://mes-candidatures-nine.vercel.app",
+      "propuesta": {
+        "icono": "send",
+        "perfiles": [
+          "programador"
+        ],
+        "es": [
+          "Panel de candidaturas",
+          "La persona desliza ofertas a izquierda o derecha, la selección aprende de sus gustos y prepara el correo con el CV."
+        ],
+        "fr": [
+          "Tableau de candidatures",
+          "On fait glisser les offres à gauche ou à droite, la sélection apprend des goûts et prépare l'e-mail avec le CV."
+        ],
+        "en": [
+          "Job applications board",
+          "Swipe openings left or right; the selection learns your taste and prepares the email with the CV."
+        ]
+      },
+      "recomendado": "oculto",
+      "nota": "Está hecha para una persona concreta (acceso con código personal) y guarda sus ofertas, CV y conexión de correo reales. Además repite lo que ya muestra el asistente de búsqueda de empleo. Mejor no mostrarla (o como mucho 'interno')."
+    },
+    {
+      "proyecto": "propuestas",
+      "url": "https://djimenez-propuestas.vercel.app",
+      "propuesta": {
+        "icono": "target",
+        "perfiles": [
+          "programador"
+        ],
+        "es": [
+          "Propuestas comerciales",
+          "Páginas de propuesta personalizadas para cada cliente potencial."
+        ],
+        "fr": [
+          "Propositions commerciales",
+          "Pages de proposition personnalisées pour chaque client potentiel."
+        ],
+        "en": [
+          "Sales proposals",
+          "Personalised proposal pages for each prospective client."
+        ]
+      },
+      "recomendado": "oculto",
+      "nota": "Contiene propuestas para clientes potenciales concretos (sus nombres están en los archivos) y la portada solo dice 'propuestas privadas'. Mejor no mostrarla."
+    },
+    {
+      "proyecto": "qr-tool",
+      "url": "https://qr-tool-ruddy.vercel.app",
+      "propuesta": {
+        "icono": "target",
+        "perfiles": [
+          "programador"
+        ],
+        "es": [
+          "Generador de códigos QR",
+          "Servicio que crea códigos QR a medida para otras apps."
+        ],
+        "fr": [
+          "Générateur de QR codes",
+          "Service qui crée des QR codes sur mesure pour d'autres applis."
+        ],
+        "en": [
+          "QR code generator",
+          "Service that creates custom QR codes for other apps."
+        ]
+      },
+      "recomendado": "oculto",
+      "nota": "Es una pieza técnica auxiliar sin página (la portada da 404 y tiene la protección de Vercel activada); no aporta nada visible. Mejor ocultarla."
     }
   ]
 }
