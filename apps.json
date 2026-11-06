@@ -570,6 +570,102 @@
       },
       "recomendado": "oculto",
       "nota": "Es una pieza técnica auxiliar sin página (la portada da 404 y tiene la protección de Vercel activada); no aporta nada visible. Mejor ocultarla."
+    },
+    {
+      "proyecto": "demo-crm-solar",
+      "url": "https://demo-crm-solar-chi.vercel.app",
+      "propuesta": {
+        "icono": "sun",
+        "perfiles": [
+          "programador"
+        ],
+        "es": [
+          "CRM para instaladoras solares",
+          "Embudo de ventas, clientes, plantas y tareas del día, con datos de ejemplo."
+        ],
+        "fr": [
+          "CRM pour installateurs solaires",
+          "Pipeline commercial, clients, installations et tâches du jour, avec des données d'exemple."
+        ],
+        "en": [
+          "CRM for solar installers",
+          "Sales pipeline, clients, plants and daily tasks, with sample data."
+        ]
+      },
+      "recomendado": "publico",
+      "nota": "Demo propia con datos ficticios que se guardan solo en el navegador; la portada no nombra a ninguna empresa (solo si se abre con un parámetro en el enlace). Ojo: tiene la protección de Vercel activada, así que el enlace pide inicio de sesión; si la publicas, hay que quitarla."
+    },
+    {
+      "proyecto": "digital-teeth-portfolio",
+      "url": "https://digital-teeth-portfolio.vercel.app",
+      "propuesta": {
+        "icono": "tooth",
+        "perfiles": [
+          "programador"
+        ],
+        "es": [
+          "Portfolio 3D de diseño dental",
+          "Galería de trabajos de diseño dental CAD que se giran y amplían en 3D, con zona privada para subirlos."
+        ],
+        "fr": [
+          "Portfolio 3D de design dentaire",
+          "Galerie de réalisations de CAO dentaire à faire pivoter et zoomer en 3D, avec espace privé pour les ajouter."
+        ],
+        "en": [
+          "3D dental design portfolio",
+          "Gallery of CAD dental design work you can rotate and zoom in 3D, with a private area to upload pieces."
+        ]
+      },
+      "recomendado": "interno",
+      "nota": "Es una web pública, pero lleva la marca propia de un diseñador dental (su nombre aparece en la página y en el proyecto), así que mejor sin enlace. Si la marca es tuya, se puede hacer pública."
+    },
+    {
+      "proyecto": "digital-teeth-casos",
+      "url": "https://digital-teeth-casos.vercel.app",
+      "propuesta": {
+        "icono": "tooth",
+        "perfiles": [
+          "programador"
+        ],
+        "es": [
+          "Envío de casos dentales",
+          "Formulario para que los laboratorios suban escaneos 3D, marquen las piezas y den instrucciones de diseño."
+        ],
+        "fr": [
+          "Envoi de cas dentaires",
+          "Formulaire pour que les laboratoires envoient leurs scans 3D, sélectionnent les dents et donnent les consignes de design."
+        ],
+        "en": [
+          "Dental case submission",
+          "Form for labs to upload 3D scans, select the teeth and give design instructions."
+        ]
+      },
+      "recomendado": "interno",
+      "nota": "Guarda datos reales de laboratorios, referencias de pacientes y archivos en el servidor, y lleva la marca de un diseñador dental. Mejor sin enlace (u 'oculto'). Además tiene la protección de Vercel activada."
+    },
+    {
+      "proyecto": "mis-apps-diego",
+      "url": "https://mis-apps-diego.vercel.app",
+      "propuesta": {
+        "icono": "target",
+        "perfiles": [
+          "programador"
+        ],
+        "es": [
+          "Acceso a mis apps",
+          "Atajo para el móvil que abre un panel personal de apps."
+        ],
+        "fr": [
+          "Accès à mes applis",
+          "Raccourci mobile qui ouvre un tableau personnel d'applis."
+        ],
+        "en": [
+          "My apps launcher",
+          "Phone shortcut that opens a personal apps panel."
+        ]
+      },
+      "recomendado": "oculto",
+      "nota": "Es solo un atajo personal para la pantalla de inicio del móvil (lleva tu nombre y no tiene contenido propio). No aporta nada a la página."
     }
   ]
 }
