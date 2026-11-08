@@ -574,6 +574,54 @@
       },
       "recomendado": "oculto",
       "nota": "Es una pieza técnica auxiliar sin página (la portada da 404 y tiene la protección de Vercel activada); no aporta nada visible. Mejor ocultarla."
+    },
+    {
+      "proyecto": "demo-scada-cartera",
+      "url": "https://demo-scada-cartera.vercel.app",
+      "propuesta": {
+        "icono": "sun",
+        "perfiles": [
+          "programador"
+        ],
+        "es": [
+          "Panel de cartera solar",
+          "Une los datos de varias plantas fotovoltaicas, prioriza las alarmas y prepara el informe mensual para inversores."
+        ],
+        "fr": [
+          "Tableau de parc solaire",
+          "Réunit les données de plusieurs centrales photovoltaïques, priorise les alarmes et prépare le rapport mensuel aux investisseurs."
+        ],
+        "en": [
+          "Solar portfolio dashboard",
+          "Brings together data from several solar plants, prioritises alarms and prepares the monthly investor report."
+        ]
+      },
+      "recomendado": "interno",
+      "nota": "Demo comercial con datos de ejemplo y sin nombres de clientes, pero el texto habla de 'vuestro SCADA', así que parece preparada para enseñársela a un cliente potencial. Por eso mejor sin enlace; si es una demo general tuya, se puede hacer pública. Ojo: tiene la protección de Vercel activada, así que el enlace pide inicio de sesión; si la publicas, hay que quitarla."
+    },
+    {
+      "proyecto": "demo-ppi-obra",
+      "url": "https://demo-ppi-obra.vercel.app",
+      "propuesta": {
+        "icono": "target",
+        "perfiles": [
+          "programador"
+        ],
+        "es": [
+          "Inspección de obra desde el móvil",
+          "Lista de puntos de inspección con OK o no conforme, fotos e informe que se genera solo."
+        ],
+        "fr": [
+          "Inspection de chantier sur mobile",
+          "Liste de points de contrôle avec conforme ou non conforme, photos et rapport généré automatiquement."
+        ],
+        "en": [
+          "Mobile site inspection",
+          "Inspection checklist with pass or non-conformity, photos and a report that builds itself."
+        ]
+      },
+      "recomendado": "interno",
+      "nota": "Demo comercial con datos de ejemplo y sin nombres de clientes: no guarda nada en el servidor (se queda en el navegador). Parece hecha para enseñar a clientes potenciales del sector, así que mejor sin enlace; si es una demo general tuya, se puede hacer pública. Ojo: tiene la protección de Vercel activada, así que el enlace pide inicio de sesión; si la publicas, hay que quitarla. Ningún icono encaja del todo; propongo 'target'."
     }
   ]
 }
