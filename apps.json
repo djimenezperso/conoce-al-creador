@@ -646,6 +646,79 @@
       },
       "recomendado": "oculto",
       "nota": "Es una página privada de trabajo (marcada como no indexable, la portada da 404 y tiene la protección de Vercel activada) que muestra logos y nombres de clientes potenciales reales junto a sus demos. Mejor no mostrarla."
+    },
+    {
+      "proyecto": "devis-tobias-instagram",
+      "url": "https://devis-tobias-instagram.vercel.app",
+      "propuesta": {
+        "icono": "target",
+        "perfiles": [
+          "programador",
+          "coach"
+        ],
+        "es": [
+          "Presupuesto interactivo",
+          "Presupuesto en el que el cliente activa o quita servicios y ve el total al momento."
+        ],
+        "fr": [
+          "Devis interactif",
+          "Devis où le client active ou retire des services et voit le total en direct."
+        ],
+        "en": [
+          "Interactive quote",
+          "Quote where the client turns services on or off and sees the total instantly."
+        ]
+      },
+      "recomendado": "oculto",
+      "nota": "Es un presupuesto real para un cliente potencial concreto (su nombre, su cuenta y un acuerdo de confidencialidad aparecen en la página). Mejor no mostrarla. Ojo: tiene la protección de Vercel activada, así que el enlace pide inicio de sesión; si la publicas, hay que quitarla."
+    },
+    {
+      "proyecto": "zero-appel-perdu",
+      "url": "https://zero-appel-perdu-sigma.vercel.app",
+      "propuesta": {
+        "icono": "send",
+        "perfiles": [
+          "programador"
+        ],
+        "es": [
+          "Cero llamadas perdidas",
+          "Cada llamada perdida recibe un SMS al instante para pedir que te llamen, un presupuesto o una cita."
+        ],
+        "fr": [
+          "Zéro appel perdu",
+          "Chaque appel manqué reçoit un SMS en quelques secondes : rappel, devis ou rendez-vous en un clic."
+        ],
+        "en": [
+          "Zero missed calls",
+          "Every missed call gets an instant text to request a callback, a quote or an appointment."
+        ]
+      },
+      "recomendado": "publico",
+      "nota": "Demo propia para artesanos con un simulador y datos ficticios; no muestra datos de nadie. Ojo: tiene la protección de Vercel activada, así que el enlace pide inicio de sesión; si la publicas, hay que quitarla. Ningún icono encaja del todo; propongo 'send'."
+    },
+    {
+      "proyecto": "boite-factures",
+      "url": "https://boite-factures.vercel.app",
+      "propuesta": {
+        "icono": "chart",
+        "perfiles": [
+          "programador"
+        ],
+        "es": [
+          "Buzón de facturas",
+          "Reúne las facturas recibidas, electrónicas o en papel, las valida, marca las pagadas y prepara el export contable."
+        ],
+        "fr": [
+          "Boîte à factures",
+          "Réunit les factures reçues, électroniques ou papier, les valide, suit les paiements et prépare l'export comptable."
+        ],
+        "en": [
+          "Invoice inbox",
+          "Collects received invoices, electronic or paper, validates them, tracks payments and prepares the accounting export."
+        ]
+      },
+      "recomendado": "publico",
+      "nota": "Demo propia para despachos contables con datos ficticios; no muestra nombres de clientes. Ojo: tiene la protección de Vercel activada, así que el enlace pide inicio de sesión; si la publicas, hay que quitarla."
     }
   ]
 }
