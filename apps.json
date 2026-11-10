@@ -622,6 +622,30 @@
       },
       "recomendado": "interno",
       "nota": "Demo comercial con datos de ejemplo y sin nombres de clientes: no guarda nada en el servidor (se queda en el navegador). Parece hecha para enseñar a clientes potenciales del sector, así que mejor sin enlace; si es una demo general tuya, se puede hacer pública. Ojo: tiene la protección de Vercel activada, así que el enlace pide inicio de sesión; si la publicas, hay que quitarla. Ningún icono encaja del todo; propongo 'target'."
+    },
+    {
+      "proyecto": "dj-herramientas",
+      "url": "https://dj-herramientas.vercel.app",
+      "propuesta": {
+        "icono": "chart",
+        "perfiles": [
+          "programador"
+        ],
+        "es": [
+          "Herramientas internas de diseño",
+          "Compara la identidad visual de cada demo con la de su web y ajusta los colores."
+        ],
+        "fr": [
+          "Outils internes de design",
+          "Compare l'identité visuelle de chaque démo avec celle de son site et ajuste les couleurs."
+        ],
+        "en": [
+          "Internal design tools",
+          "Compares each demo's visual identity with its website and adjusts the colours."
+        ]
+      },
+      "recomendado": "oculto",
+      "nota": "Es una página privada de trabajo (marcada como no indexable, la portada da 404 y tiene la protección de Vercel activada) que muestra logos y nombres de clientes potenciales reales junto a sus demos. Mejor no mostrarla."
     }
   ]
 }
