@@ -719,6 +719,54 @@
       },
       "recomendado": "publico",
       "nota": "Demo propia para despachos contables con datos ficticios; no muestra nombres de clientes. Ojo: tiene la protección de Vercel activada, así que el enlace pide inicio de sesión; si la publicas, hay que quitarla."
+    },
+    {
+      "proyecto": "djimenezapps",
+      "url": "https://djimenezapps.com",
+      "propuesta": {
+        "icono": "target",
+        "perfiles": [
+          "programador"
+        ],
+        "es": [
+          "Web de apps a medida",
+          "Web comercial con demos en directo de herramientas de automatización e IA para empresas."
+        ],
+        "fr": [
+          "Site d'applis sur mesure",
+          "Site commercial avec des démos en direct d'outils d'automatisation et d'IA pour entreprises."
+        ],
+        "en": [
+          "Custom apps website",
+          "Business website with live demos of automation and AI tools for companies."
+        ]
+      },
+      "recomendado": "publico",
+      "nota": "Es tu propia web comercial: solo enseña demos con datos ficticios y tus datos de contacto, sin nombres de clientes. Se publicaría con tu dominio propio (sin la protección de Vercel). Ningún icono encaja del todo; propongo 'target'."
+    },
+    {
+      "proyecto": "oficina-diego",
+      "url": "https://panel.djimenezapps.com",
+      "propuesta": {
+        "icono": "chart",
+        "perfiles": [
+          "programador"
+        ],
+        "es": [
+          "Oficina privada",
+          "Zona privada con acceso por código que reúne enlaces de demos y presupuestos."
+        ],
+        "fr": [
+          "Bureau privé",
+          "Espace privé avec code d'accès qui réunit les liens des démos et des devis."
+        ],
+        "en": [
+          "Private office",
+          "Code-protected private area gathering demo and quote links."
+        ]
+      },
+      "recomendado": "oculto",
+      "nota": "Es tu zona privada de trabajo (pide código, no indexable y la portada da 404) con enlaces a presupuestos de clientes potenciales. Mejor no mostrarla."
     }
   ]
 }
