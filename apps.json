@@ -791,6 +791,80 @@
       },
       "recomendado": "oculto",
       "nota": "Es la web de una empresa concreta (su nombre y marca aparecen en toda la página) y aún tiene datos de contacto sin rellenar, así que parece un trabajo o propuesta para un cliente. Mejor no mostrarla (o como mucho 'interno'). Ojo: tiene la protección de Vercel activada. Ningún icono encaja del todo; propongo 'target'."
+    },
+    {
+      "proyecto": "english-world-tour",
+      "url": "https://english-world-tour.vercel.app",
+      "propuesta": {
+        "icono": "mic",
+        "perfiles": [
+          "profesor",
+          "programador"
+        ],
+        "es": [
+          "Juego de inglés en 3D",
+          "Prototipo de juego educativo de inglés con personajes animados en 3D."
+        ],
+        "fr": [
+          "Jeu d'anglais en 3D",
+          "Prototype de jeu éducatif d'anglais avec des personnages animés en 3D."
+        ],
+        "en": [
+          "3D English game",
+          "Prototype of an educational English game with animated 3D characters."
+        ]
+      },
+      "recomendado": "oculto",
+      "nota": "Está a medio hacer: la portada da 404 y solo hay una página de prueba con dos personajes 3D. Mejor esperar a que esté terminado. Ojo: tiene la protección de Vercel activada."
+    },
+    {
+      "proyecto": "quiz-to-be",
+      "url": "https://to-be.djimenezapps.com",
+      "propuesta": {
+        "icono": "mic",
+        "perfiles": [
+          "profesor",
+          "programador"
+        ],
+        "es": [
+          "Quiz de inglés para alumnos",
+          "Actividades interactivas de gramática inglesa con corrección al momento, carnet de vocabulario y envío de resultados al profesor."
+        ],
+        "fr": [
+          "Quiz d'anglais pour élèves",
+          "Activités interactives de grammaire anglaise avec correction immédiate, carnet de vocabulaire et envoi des résultats au professeur."
+        ],
+        "en": [
+          "English quiz for students",
+          "Interactive English grammar activities with instant feedback, a vocabulary notebook and results sent to the teacher."
+        ]
+      },
+      "recomendado": "interno",
+      "nota": "Lleva el logo de un centro de formación concreto y guarda nombres y resultados de alumnos reales, así que mejor como 'uso interno' (sin enlace). Se abre con tu dominio propio sin la protección de Vercel."
+    },
+    {
+      "proyecto": "demo-web-agua",
+      "url": "https://demo-web-agua.vercel.app",
+      "propuesta": {
+        "icono": "target",
+        "perfiles": [
+          "programador"
+        ],
+        "es": [
+          "Web de marca de agua",
+          "Web comercial de demostración con animación al hacer scroll, catálogo y configurador de botellas personalizadas, en 3 idiomas."
+        ],
+        "fr": [
+          "Site de marque d'eau",
+          "Site commercial de démonstration avec animation au défilement, catalogue et configurateur de bouteilles personnalisées, en 3 langues."
+        ],
+        "en": [
+          "Water brand website",
+          "Demo business website with scroll animation, catalogue and custom bottle configurator, in 3 languages."
+        ]
+      },
+      "recomendado": "publico",
+      "nota": "Demo propia con una marca ficticia (lo dice la propia página) y sin datos de clientes. Ojo: tiene la protección de Vercel activada, así que el enlace pide inicio de sesión; si la publicas, hay que quitarla. Ningún icono encaja del todo; propongo 'target'."
     }
   ]
 }
