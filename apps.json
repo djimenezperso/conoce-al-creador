@@ -767,6 +767,30 @@
       },
       "recomendado": "oculto",
       "nota": "Es tu zona privada de trabajo (pide código, no indexable y la portada da 404) con enlaces a presupuestos de clientes potenciales. Mejor no mostrarla."
+    },
+    {
+      "proyecto": "anel-grafica",
+      "url": "https://anel-grafica.vercel.app",
+      "propuesta": {
+        "icono": "target",
+        "perfiles": [
+          "programador"
+        ],
+        "es": [
+          "Web de empresa de artes gráficas",
+          "Web comercial con servicios, galería de trabajos, proceso y formulario de presupuesto."
+        ],
+        "fr": [
+          "Site d'entreprise d'arts graphiques",
+          "Site commercial avec services, galerie de réalisations, processus et formulaire de devis."
+        ],
+        "en": [
+          "Graphic arts company website",
+          "Business website with services, work gallery, process and quote request form."
+        ]
+      },
+      "recomendado": "oculto",
+      "nota": "Es la web de una empresa concreta (su nombre y marca aparecen en toda la página) y aún tiene datos de contacto sin rellenar, así que parece un trabajo o propuesta para un cliente. Mejor no mostrarla (o como mucho 'interno'). Ojo: tiene la protección de Vercel activada. Ningún icono encaja del todo; propongo 'target'."
     }
   ]
 }
