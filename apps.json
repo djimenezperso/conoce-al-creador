@@ -865,6 +865,30 @@
       },
       "recomendado": "publico",
       "nota": "Demo propia con una marca ficticia (lo dice la propia página) y sin datos de clientes. Ojo: tiene la protección de Vercel activada, así que el enlace pide inicio de sesión; si la publicas, hay que quitarla. Ningún icono encaja del todo; propongo 'target'."
+    },
+    {
+      "proyecto": "anel-elegante",
+      "url": "https://anel-elegante.vercel.app",
+      "propuesta": {
+        "icono": "target",
+        "perfiles": [
+          "programador"
+        ],
+        "es": [
+          "Web elegante de empresa de artes gráficas",
+          "Web comercial con servicios, muestras de acabados, proceso y formulario de presupuesto."
+        ],
+        "fr": [
+          "Site élégant d'entreprise d'arts graphiques",
+          "Site commercial avec services, échantillons de finitions, processus et formulaire de devis."
+        ],
+        "en": [
+          "Elegant graphic arts company website",
+          "Business website with services, finish samples, process and quote request form."
+        ]
+      },
+      "recomendado": "oculto",
+      "nota": "Es otra versión de la web de la misma empresa concreta que anel-grafica (su nombre, marca, teléfono y dirección aparecen en la página), así que parece un trabajo o propuesta para un cliente. Mejor no mostrarla (o como mucho 'interno'). Ojo: tiene la protección de Vercel activada. Ningún icono encaja del todo; propongo 'target'."
     }
   ]
 }
