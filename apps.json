@@ -889,6 +889,54 @@
       },
       "recomendado": "oculto",
       "nota": "Es otra versión de la web de la misma empresa concreta que anel-grafica (su nombre, marca, teléfono y dirección aparecen en la página), así que parece un trabajo o propuesta para un cliente. Mejor no mostrarla (o como mucho 'interno'). Ojo: tiene la protección de Vercel activada. Ningún icono encaja del todo; propongo 'target'."
+    },
+    {
+      "proyecto": "bote-comun",
+      "url": "https://bote-comun.vercel.app",
+      "propuesta": {
+        "icono": "chart",
+        "perfiles": [
+          "programador"
+        ],
+        "es": [
+          "Bote común de un grupo",
+          "Registro compartido de aportaciones, gastos, retiradas y productos de un fondo común, con panel por socio y sincronización."
+        ],
+        "fr": [
+          "Cagnotte commune d'un groupe",
+          "Registre partagé des apports, dépenses, retraits et produits d'un fonds commun, avec tableau par membre et synchronisation."
+        ],
+        "en": [
+          "Group shared fund",
+          "Shared log of contributions, expenses, withdrawals and products of a common fund, with per-member dashboard and sync."
+        ]
+      },
+      "recomendado": "oculto",
+      "nota": "Es el registro de dinero de un grupo concreto (socios y movimientos reales de una cuenta común), así que tiene datos personales de otras personas. Mejor no mostrarla (o como mucho 'interno'). Ojo: tiene la protección de Vercel activada."
+    },
+    {
+      "proyecto": "avisos",
+      "url": "https://avisos-black.vercel.app",
+      "propuesta": {
+        "icono": "send",
+        "perfiles": [
+          "programador"
+        ],
+        "es": [
+          "Avisos push en el móvil",
+          "App instalable que recibe notificaciones push de otras apps y automatizaciones, con historial de avisos y acceso por código."
+        ],
+        "fr": [
+          "Notifications push sur mobile",
+          "App installable qui reçoit les notifications push d'autres apps et automatisations, avec historique et accès par code."
+        ],
+        "en": [
+          "Mobile push alerts",
+          "Installable app that receives push notifications from other apps and automations, with alert history and code access."
+        ]
+      },
+      "recomendado": "oculto",
+      "nota": "Es una herramienta personal tuya (tu bandeja de avisos privada, con acceso por código); no aporta nada a un visitante. Si quieres enseñarla como ejemplo técnico, 'interno'. Ojo: tiene la protección de Vercel activada."
     }
   ]
 }
