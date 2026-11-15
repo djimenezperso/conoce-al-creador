@@ -937,6 +937,127 @@
       },
       "recomendado": "oculto",
       "nota": "Es una herramienta personal tuya (tu bandeja de avisos privada, con acceso por código); no aporta nada a un visitante. Si quieres enseñarla como ejemplo técnico, 'interno'. Ojo: tiene la protección de Vercel activada."
+    },
+    {
+      "proyecto": "mis-tareas",
+      "url": "https://tareas.djimenezapps.com",
+      "propuesta": {
+        "icono": "target",
+        "perfiles": [
+          "programador"
+        ],
+        "es": [
+          "Agenda de tareas",
+          "Lista de tareas con prioridades y fechas, sincronizada con el calendario."
+        ],
+        "fr": [
+          "Agenda de tâches",
+          "Liste de tâches avec priorités et dates, synchronisée avec l'agenda."
+        ],
+        "en": [
+          "Task planner",
+          "Task list with priorities and due dates, synced with the calendar."
+        ]
+      },
+      "recomendado": "oculto",
+      "nota": "Es tu agenda personal: guarda tus tareas y lee tu calendario real, con nombres de citas y empresas. Si quieres enseñarla, mejor como 'interno'."
+    },
+    {
+      "proyecto": "tareas-automatizadas",
+      "url": "https://automatizadas.djimenezapps.com",
+      "propuesta": {
+        "icono": "chart",
+        "perfiles": [
+          "programador"
+        ],
+        "es": [
+          "Panel de automatizaciones",
+          "Calendario semanal de tareas automáticas con interruptor para pausarlas o activarlas."
+        ],
+        "fr": [
+          "Tableau des automatisations",
+          "Calendrier hebdomadaire des tâches automatiques avec interrupteur pour les mettre en pause ou les activer."
+        ],
+        "en": [
+          "Automation dashboard",
+          "Weekly calendar of automated tasks with a switch to pause or resume them."
+        ]
+      },
+      "recomendado": "oculto",
+      "nota": "Herramienta interna tuya: muestra tus tareas programadas con nombres de tus proyectos y empresas. Protegida con código, pero no aporta nada a la página pública salvo como 'interno'."
+    },
+    {
+      "proyecto": "mi-ruta",
+      "url": "https://ruta.djimenezapps.com",
+      "propuesta": {
+        "icono": "chart",
+        "perfiles": [
+          "programador",
+          "coach"
+        ],
+        "es": [
+          "Mapa de objetivos",
+          "Mapa de progreso con hitos, contadores semanales y previsión de llegada a la meta."
+        ],
+        "fr": [
+          "Carte d'objectifs",
+          "Carte de progression avec étapes, compteurs hebdomadaires et prévision d'arrivée à l'objectif."
+        ],
+        "en": [
+          "Goal map",
+          "Progress map with milestones, weekly counters and a forecast of when you'll reach the goal."
+        ]
+      },
+      "recomendado": "oculto",
+      "nota": "Es tu seguimiento personal de negocio: muestra tus ingresos, clientes y nombres de empresas. Si se quisiera enseñar habría que hacer una versión de demo; por ahora mejor oculto."
+    },
+    {
+      "proyecto": "b2d-sudadera",
+      "url": "https://b2d-sudadera.vercel.app",
+      "propuesta": {
+        "icono": "shirt",
+        "perfiles": [
+          "programador"
+        ],
+        "es": [
+          "Visor de producto 360°",
+          "Escaparate de una prenda que se gira con el dedo para verla por todos los lados y compartirla."
+        ],
+        "fr": [
+          "Visionneuse produit 360°",
+          "Vitrine d'un vêtement qu'on fait tourner du doigt pour le voir sous tous les angles et le partager."
+        ],
+        "en": [
+          "360° product viewer",
+          "Showcase of a garment you spin with your finger to see every side and share it."
+        ]
+      },
+      "recomendado": "interno",
+      "nota": "Escaparate de una sudadera de una marca concreta (puede ser de un cliente o tuya): no tiene datos personales, pero enseña la marca. Además, la dirección de Vercel pide inicio de sesión; el enlace público sería b2d.djimenezapps.com. Si la marca es tuya, se puede hacer pública."
+    },
+    {
+      "proyecto": "llamadas-solar",
+      "url": "https://llamadas-solar.djimenezapps.com",
+      "propuesta": {
+        "icono": "sun",
+        "perfiles": [
+          "programador"
+        ],
+        "es": [
+          "CRM de llamadas en frío",
+          "Lista de empresas para llamar, con guion, estado de cada llamada, demos enviadas y reuniones."
+        ],
+        "fr": [
+          "CRM d'appels à froid",
+          "Liste d'entreprises à appeler, avec script, statut de chaque appel, démos envoyées et rendez-vous."
+        ],
+        "en": [
+          "Cold-call CRM",
+          "List of companies to call, with script, call status, demos sent and meetings."
+        ]
+      },
+      "recomendado": "oculto",
+      "nota": "Contiene más de mil empresas reales con sus datos y notas de llamadas: no debe salir en la página. Si quieres enseñar el sistema, mejor como 'interno' (sin enlace)."
     }
   ]
 }
